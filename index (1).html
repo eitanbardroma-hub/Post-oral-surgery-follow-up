@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מדריך החלמה לאחר עקירת שיניים</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Arial Hebrew', Arial, sans-serif; background: #f0f4ff; color: #1a1a2e; min-height: 100vh; direction: rtl; }
+  header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 20px; text-align: center; }
+  header h1 { font-size: 1.5rem; font-weight: 700; }
+  header p { font-size: 0.85rem; opacity: 0.85; margin-top: 4px; }
+  .nav-tabs { display: flex; background: white; border-bottom: 2px solid #e5e7eb; overflow-x: auto; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.08); scrollbar-width: none; flex-direction: row-reverse; }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn { flex: 1; min-width: 70px; padding: 11px 5px; border: none; background: none; cursor: pointer; font-size: 0.68rem; font-weight: 600; color: #6b7280; display: flex; flex-direction: column; align-items: center; gap: 3px; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .tab-btn .icon { font-size: 1.2rem; }
+  .tab-btn.active { color: #1e3a8a; border-bottom-color: #3b82f6; background: #f0f4ff; }
+  .section { display: none; padding: 16px; max-width: 680px; margin: 0 auto; }
+  .section.active { display: block; }
+  .card { background: white; border-radius: 16px; padding: 18px; margin-bottom: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+  .section-title { font-size: 1rem; font-weight: 700; color: #1e3a8a; margin-bottom: 14px; }
+  /* INTAKE */
+  .intake-hero { background: linear-gradient(135deg, #1e3a8a, #3b82f6); border-radius: 14px; padding: 18px; color: white; text-align: center; margin-bottom: 14px; }
+  .intake-hero h2 { font-size: 1.05rem; margin-bottom: 5px; }
+  .intake-hero p { font-size: 0.8rem; opacity: 0.9; }
+  .allergy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .allergy-item { display: flex; align-items: center; gap: 9px; padding: 11px 10px; background: #f8faff; border-radius: 12px; border: 2px solid #e5e7eb; cursor: pointer; transition: all 0.2s; user-select: none; flex-direction: row-reverse; }
+  .allergy-item.checked { background: #fee2e2; border-color: #fca5a5; }
+  .allergy-box { width: 22px; height: 22px; border-radius: 6px; border: 2px solid #d1d5db; background: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.78rem; transition: all 0.2s; color: transparent; }
+  .allergy-item.checked .allergy-box { background: #dc2626; border-color: #dc2626; color: white; }
+  .allergy-label { font-size: 0.78rem; font-weight: 600; color: #374151; line-height: 1.3; flex: 1; text-align: right; }
+  .allergy-item.checked .allergy-label { color: #dc2626; }
+  .alert-box { padding: 11px 13px; border-radius: 10px; font-size: 0.81rem; font-weight: 600; margin-top: 12px; display: none; line-height: 1.6; }
+  .alert-box.show { display: block; }
+  .alert-red { background: #fee2e2; color: #dc2626; border-right: 4px solid #dc2626; }
+  .alert-green { background: #d1fae5; color: #065f46; border-right: 4px solid #10b981; }
+  .alert-warn { background: #fffbeb; color: #92400e; border-right: 4px solid #f59e0b; }
+  .start-btn { width: 100%; padding: 15px; background: linear-gradient(135deg,#1e3a8a,#3b82f6); color: white; border: none; border-radius: 14px; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 14px; }
+  /* VAS */
+  .vas-score-display { text-align: center; padding: 16px 0 8px; }
+  .vas-emoji { font-size: 2.2rem; margin-bottom: 4px; }
+  .vas-number { font-size: 3rem; font-weight: 800; line-height: 1; }
+  .vas-descriptor { font-size: 0.9rem; font-weight: 700; margin-top: 4px; }
+  .vas-faces { display: flex; justify-content: space-between; margin: 6px 0 4px; flex-direction: row-reverse; }
+  .vas-face { font-size: 1.4rem; cursor: pointer; opacity: 0.45; transition: all 0.2s; text-align: center; flex: 1; }
+  .vas-face .face-val { font-size: 0.6rem; color: #9ca3af; }
+  .vas-face.active { opacity: 1; transform: scale(1.25); }
+  .vas-slider { width: 100%; -webkit-appearance: none; height: 12px; border-radius: 6px; background: linear-gradient(270deg,#10b981,#f59e0b,#ef4444); outline: none; cursor: pointer; margin: 10px 0 4px; }
+  .vas-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; border-radius: 50%; background: white; border: 3px solid #3b82f6; box-shadow: 0 2px 8px rgba(0,0,0,0.2); cursor: pointer; }
+  .vas-labels { display: flex; justify-content: space-between; font-size: 0.7rem; color: #9ca3af; flex-direction: row-reverse; }
+  .save-btn { width: 100%; padding: 13px; background: #3b82f6; color: white; border: none; border-radius: 12px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-top: 14px; transition: background 0.2s; }
+  .save-btn:hover { background: #1e3a8a; }
+  .history-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: #f8faff; border-radius: 10px; margin-bottom: 8px; flex-direction: row-reverse; }
+  .h-date { font-size: 0.76rem; color: #6b7280; }
+  .h-val { font-size: 1rem; font-weight: 800; }
+  .h-desc { font-size: 0.76rem; font-weight: 600; margin-top: 1px; }
+  /* QUESTIONNAIRE */
+  .q-dots { display: flex; gap: 5px; margin-bottom: 14px; flex-direction: row-reverse; }
+  .q-dot { flex: 1; height: 6px; border-radius: 3px; background: #e5e7eb; transition: background 0.3s; }
+  .q-dot.done { background: #3b82f6; }
+  .q-dot.current { background: #93c5fd; }
+  .q-num { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+  .q-text { font-size: 0.98rem; font-weight: 700; color: #1e3a8a; margin-bottom: 14px; line-height: 1.5; }
+  .q-opt { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 9px; transition: all 0.2s; flex-direction: row-reverse; text-align: right; }
+  .q-opt:hover { border-color: #93c5fd; background: #f0f4ff; }
+  .q-opt.sel-ok { border-color: #10b981; background: #f0fdf4; color: #065f46; }
+  .q-opt.sel-warn { border-color: #f59e0b; background: #fffbeb; color: #92400e; }
+  .q-opt.sel-danger { border-color: #ef4444; background: #fef2f2; color: #991b1b; }
+  .q-opt-icon { font-size: 1.15rem; flex-shrink: 0; }
+  .q-nav { display: flex; gap: 10px; margin-top: 14px; flex-direction: row-reverse; }
+  .q-nav button { flex: 1; padding: 12px; border: none; border-radius: 12px; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+  .btn-back { background: #f3f4f6; color: #374151; }
+  .btn-next { background: #3b82f6; color: white; }
+  .btn-next:disabled { background: #d1d5db; cursor: not-allowed; }
+  .result-card { border-radius: 13px; padding: 14px; margin-bottom: 11px; }
+  .r-ok { background: #f0fdf4; border-right: 5px solid #10b981; }
+  .r-warn { background: #fffbeb; border-right: 5px solid #f59e0b; }
+  .r-danger { background: #fef2f2; border-right: 5px solid #ef4444; }
+  .result-card h4 { font-size: 0.87rem; font-weight: 700; margin-bottom: 4px; }
+  .result-card p { font-size: 0.8rem; color: #4b5563; line-height: 1.6; }
+  /* RECOVERY */
+  .day-counter { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-direction: row-reverse; }
+  .day-counter button { background: #3b82f6; color: white; border: none; border-radius: 50%; width: 42px; height: 42px; font-size: 1.3rem; cursor: pointer; }
+  .day-number { font-size: 2.4rem; font-weight: 800; color: #1e3a8a; text-align: center; }
+  .day-label { font-size: 0.78rem; color: #6b7280; text-align: center; }
+  .stage-badge { text-align: center; padding: 10px; border-radius: 12px; font-weight: 700; font-size: 0.86rem; margin-bottom: 14px; }
+  .stage-critical { background: #fee2e2; color: #dc2626; }
+  .stage-healing { background: #fef3c7; color: #d97706; }
+  .stage-good { background: #d1fae5; color: #059669; }
+  .stage-full { background: #dbeafe; color: #1d4ed8; }
+  .tip-item { display: flex; gap: 10px; padding: 11px; background: #f8faff; border-radius: 11px; border-right: 4px solid #3b82f6; margin-bottom: 9px; flex-direction: row-reverse; text-align: right; }
+  .tip-icon { font-size: 1.25rem; flex-shrink: 0; }
+  .tip-item h4 { font-size: 0.86rem; font-weight: 700; margin-bottom: 2px; }
+  .tip-item p { font-size: 0.79rem; color: #6b7280; line-height: 1.6; }
+  /* SIDE EFFECTS */
+  .effect-card { background: white; border-radius: 13px; padding: 15px; margin-bottom: 11px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); cursor: pointer; }
+  .effect-header { display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; }
+  .effect-title { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.9rem; flex-direction: row-reverse; }
+  .badge { font-size: 0.67rem; padding: 3px 8px; border-radius: 20px; font-weight: 600; }
+  .badge-normal { background: #d1fae5; color: #059669; }
+  .badge-monitor { background: #fef3c7; color: #d97706; }
+  .badge-urgent { background: #fee2e2; color: #dc2626; }
+  .effect-body { margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0f0f0; display: none; font-size: 0.82rem; color: #4b5563; line-height: 1.7; text-align: right; }
+  .effect-body.open { display: block; }
+  .effect-body ul { padding-right: 16px; padding-left: 0; margin-top: 6px; }
+  .chevron { color: #9ca3af; transition: transform 0.2s; font-size: 0.9rem; }
+  .chevron.open { transform: rotate(180deg); }
+  /* SWELLING TIMELINE */
+  .swelling-timeline { display: flex; margin: 14px 0; gap: 0; flex-direction: row-reverse; }
+  .sw-day { flex: 1; text-align: center; position: relative; }
+  .sw-day-bar { height: 60px; border-radius: 6px; margin: 0 2px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 4px; font-size: 0.62rem; font-weight: 700; color: white; transition: all 0.3s; }
+  .sw-label { font-size: 0.65rem; color: #6b7280; margin-top: 4px; font-weight: 600; }
+  .sw-day1 .sw-day-bar { background: #f97316; height: 35px; }
+  .sw-day2 .sw-day-bar { background: #ef4444; height: 50px; }
+  .sw-day3 .sw-day-bar { background: #dc2626; height: 60px; }
+  .sw-day4 .sw-day-bar { background: #f97316; height: 48px; }
+  .sw-day5 .sw-day-bar { background: #f59e0b; height: 35px; }
+  .sw-day6 .sw-day-bar { background: #84cc16; height: 22px; }
+  .sw-day7 .sw-day-bar { background: #10b981; height: 14px; }
+  .sw-peak-label { text-align: center; font-size: 0.72rem; font-weight: 700; color: #dc2626; margin-bottom: 4px; }
+  .sw-warning-box { background: #fff7ed; border: 2px solid #f97316; border-radius: 12px; padding: 13px; margin-top: 14px; }
+  .sw-warning-box h4 { font-size: 0.85rem; font-weight: 700; color: #c2410c; margin-bottom: 6px; }
+  .sw-warning-box ul { padding-right: 16px; padding-left: 0; }
+  .sw-warning-box li { font-size: 0.8rem; color: #374151; line-height: 1.8; }
+  /* MEDICATIONS */
+  .med-card { background: white; border-radius: 13px; padding: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .med-header { display: flex; align-items: center; gap: 10px; margin-bottom: 11px; flex-direction: row-reverse; text-align: right; }
+  .med-icon { font-size: 1.7rem; }
+  .med-name { font-size: 0.93rem; font-weight: 700; color: #1e3a8a; }
+  .med-type { font-size: 0.76rem; color: #6b7280; }
+  .dose-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+  .dose-box { background: #f0f4ff; border-radius: 9px; padding: 9px; text-align: center; }
+  .dose-box .label { font-size: 0.68rem; color: #6b7280; margin-bottom: 2px; }
+  .dose-box .value { font-size: 0.85rem; font-weight: 700; color: #1e3a8a; }
+  .reminder-row { display: flex; align-items: center; justify-content: space-between; background: #f8faff; border-radius: 10px; padding: 9px 13px; flex-direction: row-reverse; }
+  .reminder-row span { font-size: 0.82rem; font-weight: 600; }
+  .toggle-switch { position: relative; width: 44px; height: 24px; }
+  .toggle-switch input { display: none; }
+  .toggle-slider { position: absolute; inset: 0; background: #d1d5db; border-radius: 20px; cursor: pointer; transition: background 0.3s; }
+  .toggle-slider::before { content:''; position: absolute; width: 18px; height: 18px; right: 3px; top: 3px; background: white; border-radius: 50%; transition: transform 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .toggle-switch input:checked + .toggle-slider { background: #3b82f6; }
+  .toggle-switch input:checked + .toggle-slider::before { transform: translateX(-20px); }
+  .med-warning { margin-top: 9px; padding: 9px 12px; background: #fff7ed; border-right: 3px solid #f97316; border-radius: 8px 0 0 8px; font-size: 0.77rem; color: #9a3412; line-height: 1.5; }
+  /* DIET */
+  .cold-banner { background: linear-gradient(135deg,#dbeafe,#e0f2fe); border-radius: 13px; padding: 15px; margin-bottom: 12px; border: 2px solid #93c5fd; }
+  .cold-banner h2 { font-size: 0.92rem; font-weight: 700; color: #1e3a8a; margin-bottom: 5px; }
+  .cold-banner p { font-size: 0.81rem; color: #1e40af; line-height: 1.6; }
+  .food-phase { background: white; border-radius: 13px; padding: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .food-phase h3 { font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-bottom: 11px; }
+  .food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .food-list h4 { font-size: 0.76rem; font-weight: 700; margin-bottom: 6px; padding: 3px 8px; border-radius: 6px; display: inline-block; }
+  .food-list.yes h4 { background: #d1fae5; color: #059669; }
+  .food-list.no h4 { background: #fee2e2; color: #dc2626; }
+  .food-list ul { padding-right: 14px; padding-left: 0; }
+  .food-list li { font-size: 0.78rem; color: #4b5563; line-height: 1.85; }
+  /* EMERGENCY */
+  .emergency-banner { background: linear-gradient(135deg,#dc2626,#b91c1c); color: white; border-radius: 14px; padding: 18px; margin-bottom: 14px; text-align: center; }
+  .emergency-banner h2 { font-size: 1.05rem; margin-bottom: 6px; }
+  .emergency-banner p { font-size: 0.8rem; opacity: 0.9; }
+  .call-btn { display: inline-block; margin-top: 12px; background: white; color: #dc2626; font-weight: 700; padding: 11px 22px; border-radius: 50px; text-decoration: none; font-size: 0.92rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .warning-card { background: white; border-radius: 13px; padding: 15px; margin-bottom: 11px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-right: 5px solid #dc2626; }
+  .warning-card h3 { font-size: 0.9rem; font-weight: 700; color: #dc2626; margin-bottom: 8px; }
+  .warning-card li { font-size: 0.81rem; color: #4b5563; line-height: 1.9; }
+  .warning-card ul { padding-right: 15px; padding-left: 0; }
+</style>
+</head>
+<body>
+
+<!-- ═══ OPENING LANDING ═══ -->
+<div id="openOverlay" style="display:none;position:fixed;inset:0;z-index:9999;overflow:hidden;">
+
+  <!-- PAGE 1: HOW TO OPEN -->
+  <div id="landingPage1" style="position:absolute;inset:0;background:linear-gradient(160deg,#0f172a 0%,#1e3a8a 55%,#2563eb 100%);overflow-y:auto;padding:20px 16px 36px;transition:opacity 0.4s;">
+    <div style="max-width:440px;margin:0 auto;color:white;">
+
+      <!-- Header -->
+      <div style="text-align:center;padding:28px 0 22px;">
+        <div style="font-size:3.8rem;margin-bottom:10px;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.4));">🦷</div>
+        <h1 style="font-size:1.45rem;font-weight:900;margin:0 0 6px;letter-spacing:-0.5px;">מדריך החלמה חכם</h1>
+        <p style="font-size:0.83rem;opacity:0.75;margin:0;">מרפאת ד"ר בר דרומא איתן</p>
+      </div>
+
+      <!-- Intro box -->
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:18px;padding:18px;margin-bottom:16px;">
+        <div style="font-size:0.88rem;font-weight:800;margin-bottom:10px;text-align:center;">👋 ברוך הבא!</div>
+        <p style="font-size:0.81rem;line-height:1.85;margin:0;text-align:right;">
+          הרופא שלך שלח לך את האפליקציה הזו כדי ללוות אותך לאחר הניתוח.<br>
+          לפני שנתחיל — חשוב לפתוח אותה <strong>בדפדפן</strong> ולא בתוך WhatsApp, כדי שכל הפונקציות יעבדו כראוי.
+        </p>
+      </div>
+
+      <!-- ANDROID -->
+      <div style="background:linear-gradient(135deg,rgba(34,197,94,0.2),rgba(21,128,61,0.15));border:1.5px solid rgba(34,197,94,0.45);border-radius:18px;padding:18px;margin-bottom:12px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <div style="background:rgba(34,197,94,0.25);border-radius:12px;padding:8px 12px;font-size:1.6rem;">🤖</div>
+          <div>
+            <div style="font-size:1rem;font-weight:800;">Android</div>
+            <div style="font-size:0.74rem;opacity:0.75;">Samsung / Pixel / Xiaomi וכו׳</div>
+          </div>
+        </div>
+        <div style="display:grid;gap:9px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="background:rgba(34,197,94,0.35);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;">1</div>
+            <div style="font-size:0.82rem;line-height:1.6;">לחץ על הקובץ ב-WhatsApp</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="background:rgba(34,197,94,0.35);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;">2</div>
+            <div style="font-size:0.82rem;line-height:1.6;">במסך שנפתח — לחץ על <strong>⋮</strong> (שלוש נקודות) בפינה</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="background:rgba(34,197,94,0.35);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;">3</div>
+            <div style="font-size:0.82rem;line-height:1.6;">בחר <strong>"פתח ב-Chrome"</strong> או <strong>"פתח בדפדפן"</strong></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="background:rgba(34,197,94,0.5);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.82rem;">✓</div>
+            <div style="font-size:0.82rem;line-height:1.6;color:#86efac;font-weight:600;">האפליקציה פתוחה ומוכנה!</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:9px 11px;font-size:0.75rem;line-height:1.7;opacity:0.9;">
+          💡 <strong>לא מצאת "פתח בדפדפן"?</strong><br>
+          לחץ <strong>שמור</strong> בתוך WhatsApp ← פתח את אפליקציית <strong>הקבצים</strong> ← מצא את הקובץ ← לחץ עליו ← בחר Chrome
+        </div>
+      </div>
+
+      <!-- IPHONE -->
+      <div style="background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(109,40,217,0.15));border:1.5px solid rgba(168,85,247,0.45);border-radius:18px;padding:18px;margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <div style="background:rgba(168,85,247,0.25);border-radius:12px;padding:8px 12px;font-size:1.6rem;">🍎</div>
+          <div>
+            <div style="font-size:1rem;font-weight:800;">iPhone / iPad</div>
+            <div style="font-size:0.74rem;opacity:0.75;">iOS 14 ומעלה</div>
+          </div>
+        </div>
+        <div style="display:grid;gap:9px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="background:rgba(168,85,247,0.35);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;">1</div>
+            <div style="font-size:0.82rem;line-height:1.6;">לחץ על הקובץ ב-WhatsApp — ייפתח מסך תצוגה</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="background:rgba(168,85,247,0.35);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;">2</div>
+            <div style="font-size:0.82rem;line-height:1.6;">לחץ על אייקון השיתוף <strong style="font-size:1rem;">⎙</strong> (ריבוע עם חץ למעלה)</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="background:rgba(168,85,247,0.35);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;">3</div>
+            <div style="font-size:0.82rem;line-height:1.6;">גלול למטה ברשימה ← בחר <strong>"פתח ב-Safari"</strong></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="background:rgba(168,85,247,0.35);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;">4</div>
+            <div style="font-size:0.82rem;line-height:1.6;">ב-Safari — לחץ <strong>אפשר</strong> אם מבקש גישה לאחסון</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="background:rgba(168,85,247,0.5);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.82rem;">✓</div>
+            <div style="font-size:0.82rem;line-height:1.6;color:#d8b4fe;font-weight:600;">האפליקציה פתוחה ומוכנה!</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;background:rgba(0,0,0,0.25);border-radius:10px;padding:9px 11px;font-size:0.75rem;line-height:1.7;opacity:0.9;">
+          💡 <strong>טיפ:</strong> ב-Safari לחץ <strong>שיתוף ⎙ ← הוסף למסך הבית</strong> — תקבל אייקון נוח לאפליקציה
+        </div>
+      </div>
+
+      <!-- Next button -->
+      <button onclick="showPage2()" style="width:100%;padding:18px;background:white;color:#1e3a8a;border:none;border-radius:16px;font-size:1.05rem;font-weight:900;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,0.3);">
+        פתחתי בדפדפן — המשך ←
+      </button>
+      <p style="font-size:0.71rem;opacity:0.55;text-align:center;margin-top:12px;line-height:1.6;">
+        כבר קורא את זה בדפדפן? לחץ המשך ישירות
+      </p>
+    </div>
+  </div>
+
+  <!-- PAGE 2: APP INTRO + ENTER -->
+  <div id="landingPage2" style="position:absolute;inset:0;background:linear-gradient(160deg,#0f172a 0%,#1e3a8a 55%,#2563eb 100%);overflow-y:auto;padding:20px 16px 36px;display:none;">
+    <div style="max-width:440px;margin:0 auto;color:white;">
+
+      <div style="text-align:center;padding:24px 0 20px;">
+        <div style="font-size:3.5rem;margin-bottom:10px;">🦷</div>
+        <h1 style="font-size:1.35rem;font-weight:900;margin:0 0 6px;">מדריך ההחלמה שלך</h1>
+        <p style="font-size:0.8rem;opacity:0.75;margin:0;">מרפאת ד"ר בר דרומא איתן</p>
+      </div>
+
+      <!-- Why -->
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:18px;padding:18px;margin-bottom:14px;">
+        <div style="font-size:0.9rem;font-weight:800;margin-bottom:10px;text-align:center;">💡 למה האפליקציה הזו?</div>
+        <p style="font-size:0.81rem;line-height:1.9;margin:0;text-align:right;">
+          הניתוח שביצעת כרוך בתהליך החלמה של מספר ימים. מחקרים מראים שמטופלים שמקבלים מעקב מובנה — <strong>מחלימים טוב יותר</strong>, מדווחים מוקדם יותר על סיבוכים, ומרגישים בטוחים יותר בבית.<br><br>
+          האפליקציה מאפשרת לרופא שלך לדעת בזמן אמת אם מצבך תקין — ולהגיב מיד אם לא.
+        </p>
+      </div>
+
+      <!-- Features grid -->
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:18px;padding:18px;margin-bottom:20px;">
+        <div style="font-size:0.9rem;font-weight:800;margin-bottom:14px;text-align:center;">✨ מה תמצא כאן?</div>
+        <div style="display:grid;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.07);border-radius:12px;padding:10px 12px;">
+            <span style="font-size:1.4rem;flex-shrink:0;">📋</span>
+            <div><div style="font-size:0.83rem;font-weight:700;">טופס קבלה והסכמה דיגיטלי</div><div style="font-size:0.75rem;opacity:0.75;margin-top:2px;">חתימה דיגיטלית שנשלחת אוטומטית לרופא</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.07);border-radius:12px;padding:10px 12px;">
+            <span style="font-size:1.4rem;flex-shrink:0;">📊</span>
+            <div><div style="font-size:0.83rem;font-weight:700;">מעקב כאב יומי (VAS)</div><div style="font-size:0.75rem;opacity:0.75;margin-top:2px;">תיעוד גרפי של עוצמת הכאב לאורך ימי ההחלמה</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.07);border-radius:12px;padding:10px 12px;">
+            <span style="font-size:1.4rem;flex-shrink:0;">💊</span>
+            <div><div style="font-size:0.83rem;font-weight:700;">תכנית תרופות אישית</div><div style="font-size:0.75rem;opacity:0.75;margin-top:2px;">מותאמת לאלרגיות שלך, עם הסברים ואזהרות</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.07);border-radius:12px;padding:10px 12px;">
+            <span style="font-size:1.4rem;flex-shrink:0;">🚨</span>
+            <div><div style="font-size:0.83rem;font-weight:700;">התראה אוטומטית לרופא</div><div style="font-size:0.75rem;opacity:0.75;margin-top:2px;">חום, כאב חמור, OAC — הרופא מקבל התראה מיידית</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.07);border-radius:12px;padding:10px 12px;">
+            <span style="font-size:1.4rem;flex-shrink:0;">📅</span>
+            <div><div style="font-size:0.83rem;font-weight:700;">לוח זמנים להחלמה</div><div style="font-size:0.75rem;opacity:0.75;margin-top:2px;">מה צפוי בכל יום — מה תקין ומה לא</div></div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="closeOverlay()" style="width:100%;padding:18px;background:white;color:#1e3a8a;border:none;border-radius:16px;font-size:1.05rem;font-weight:900;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,0.3);">
+        🚀 התחל את המדריך
+      </button>
+      <p style="font-size:0.71rem;opacity:0.55;text-align:center;margin-top:12px;line-height:1.6;">
+        הנתונים נשמרים על המכשיר שלך בלבד · עובד ללא אינטרנט
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<header>
+  <h1>🦷 מדריך החלמה לאחר עקירת שיניים</h1>
+  <p>המדריך האישי שלך לטיפול לאחר הניתוח</p>
+</header>
+
+<div class="nav-tabs">
+  <button class="tab-btn active" onclick="showTab('intake',this)"><span class="icon">📋</span>קבלה</button>
+  <button class="tab-btn" onclick="showTab('consent',this)"><span class="icon">✍️</span>הסכמה</button>
+  <button class="tab-btn" onclick="showTab('preop',this)"><span class="icon">🩺</span>טרום ניתוח</button>
+  <button class="tab-btn" onclick="showTab('vas',this)"><span class="icon">📊</span>כאב</button>
+  <button class="tab-btn" onclick="showTab('sideeffect',this)"><span class="icon">🔍</span>בדיקה</button>
+  <button class="tab-btn" onclick="showTab('recovery',this)"><span class="icon">📅</span>החלמה</button>
+  <button class="tab-btn" onclick="showTab('effects',this)"><span class="icon">⚕️</span>תופעות</button>
+  <button class="tab-btn" onclick="showTab('meds',this)"><span class="icon">💊</span>תרופות</button>
+  <button class="tab-btn" onclick="showTab('food',this)"><span class="icon">🥣</span>תזונה</button>
+  <button class="tab-btn" onclick="showTab('emergency',this)"><span class="icon">🚨</span>חירום</button>
+  <button class="tab-btn" onclick="showTab('instructions',this)"><span class="icon">📄</span>הוראות</button>
+</div>
+
+<!-- ═══ קבלה ═══ -->
+<div id="intake" class="section active">
+  <div class="intake-hero">
+    <h2>📋 יום 1 — טופס קבלת מטופל</h2>
+    <p>נא למלא לפני קבלת הוראות לאחר הניתוח</p>
+  </div>
+
+  <div class="card" style="border:2px solid #1e3a8a;">
+    <div class="section-title">👨‍⚕️ פרטי הרופא המטפל והמרפאה</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">שם הרופא</label>
+        <input type="text" id="doctorName" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="ד״ר שם משפחה"></div>
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">מספר רישיון</label>
+        <input type="text" id="doctorLicense" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="12345"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">🏥 שם המרפאה</label>
+        <input type="text" id="clinicName" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="מרפאת שיניים..."></div>
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">📞 טלפון מרפאה</label>
+        <input type="tel" id="doctorTel" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="03-1234567"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">📧 מייל הרופא</label>
+        <input type="email" id="doctorEmail" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="doctor@clinic.co.il"></div>
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">📱 WhatsApp רופא</label>
+        <input type="tel" id="doctorPhone" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="050-1234567"></div>
+    </div>
+  </div>
+
+  <!-- ══ פרטי מטופל ══ -->
+  <div class="card" style="border:2px solid #10b981;">
+    <div class="section-title">👤 פרטי המטופל</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">שם משפחה</label>
+        <input type="text" id="patientLastName" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="ישראלי"></div>
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">שם פרטי</label>
+        <input type="text" id="patientFirstName" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="ישראל"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">ת.ז.</label>
+        <input type="text" id="patientId" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="000000000"></div>
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">שם האב</label>
+        <input type="text" id="patientFather" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="שם אב"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">📱 טלפון</label>
+        <input type="tel" id="patientPhone" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="050-1234567"></div>
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">תאריך לידה</label>
+        <input type="date" id="patientDOB" oninput="syncAllFields()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;"></div>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <div class="section-title">🚨 רשימת אלרגיות</div>
+    <p style="font-size:0.8rem;color:#6b7280;margin-bottom:13px;">סמן את כל האלרגיות הרלוונטיות. צוות הטיפול ישתמש במידע זה לרישום תרופות בטוחות עבורך.</p>
+    <div class="allergy-grid" id="allergyGrid">
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="penicillin"><div class="allergy-box">✓</div><span class="allergy-label">💊 פניצילין / אמוקסיצילין</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="nsaids"><div class="allergy-box">✓</div><span class="allergy-label">🔴 NSAIDs / איבופרופן (אדוויל)</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="aspirin"><div class="allergy-box">✓</div><span class="allergy-label">💊 אספירין (אקוספירין)</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="dipyrone"><div class="allergy-box">✓</div><span class="allergy-label">🟡 דיפירון (אופטלגין)</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="paracetamol"><div class="allergy-box">✓</div><span class="allergy-label">🟠 פרצטמול (אקמול / דקסמול)</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="codeine"><div class="allergy-box">✓</div><span class="allergy-label">🟣 קודאין / אופיואידים</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="steroids"><div class="allergy-box">✓</div><span class="allergy-label">💉 סטרואידים (דקסמתזון / פרדניזון)</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="local_anaesthesia"><div class="allergy-box">✓</div><span class="allergy-label">💉 הרדמה מקומית (לידוקאין)</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="latex"><div class="allergy-box">✓</div><span class="allergy-label">🧤 לטקס</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="chlorhexidine"><div class="allergy-box">✓</div><span class="allergy-label">🔵 כלורהקסידין</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="sulfa"><div class="allergy-box">✓</div><span class="allergy-label">💊 סולפה</span></label>
+      <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="other"><div class="allergy-box">✓</div><span class="allergy-label">⚠️ אחר</span></label>
+    </div>
+    <div style="margin-top:12px;">
+      <label style="font-size:0.81rem;font-weight:600;color:#374151;display:block;margin-bottom:6px;">📝 הערות נוספות / סוג התגובה:</label>
+      <textarea id="allergyNotes" style="width:100%;border:2px solid #e5e7eb;border-radius:10px;padding:10px;font-size:0.83rem;resize:vertical;min-height:65px;font-family:inherit;text-align:right;" placeholder="לדוגמה: פריחה עם אמוקסיצילין, תגובה חמורה..."></textarea>
+    </div>
+    <div style="margin-top:12px;">
+      <label style="font-size:0.81rem;font-weight:600;color:#374151;display:block;margin-bottom:6px;">📧 אימייל הרופא המטפל (לשליחת התראות תופעות שליליות):</label>
+      <input type="email" id="doctorEmail" style="width:100%;padding:10px;border:2px solid #e5e7eb;border-radius:10px;font-size:0.88rem;font-family:inherit;text-align:right;" placeholder="doctor@clinic.co.il">
+      <div style="font-size:0.74rem;color:#6b7280;margin-top:4px;">אם יסומנו תופעות שליליות חמורות בשאלון — תישלח התראה אוטומטית לרופא.</div>
+    </div>
+    <div id="allergyAlert" class="alert-box"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">📅 פרטי הניתוח</div>
+    <div style="margin-bottom:12px;">
+      <label style="font-size:0.81rem;font-weight:600;color:#374151;display:block;margin-bottom:6px;">תאריך הניתוח</label>
+      <input type="date" id="surgeryDate" style="width:100%;padding:10px;border:2px solid #e5e7eb;border-radius:10px;font-size:0.88rem;font-family:inherit;text-align:right;">
+    </div>
+    <div>
+      <label style="font-size:0.81rem;font-weight:600;color:#374151;display:block;margin-bottom:8px;">שיניים שנעקרו</label>
+      <div class="allergy-grid">
+        <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="upper_right"><div class="allergy-box">✓</div><span class="allergy-label">↖ עליון ימין</span></label>
+        <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="upper_left"><div class="allergy-box">✓</div><span class="allergy-label">↗ עליון שמאל</span></label>
+        <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="lower_right"><div class="allergy-box">✓</div><span class="allergy-label">↙ תחתון ימין</span></label>
+        <label class="allergy-item" onclick="toggleAllergy(this)"><input type="checkbox" value="lower_left"><div class="allergy-box">✓</div><span class="allergy-label">↘ תחתון שמאל</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEUROLOGICAL & SINUS ASSESSMENT BASED ON EXTRACTION SITE -->
+  <div class="card" id="lowerJawCard" style="display:none;border:2px solid #f97316;">
+    <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border-radius:10px;padding:12px;margin-bottom:12px;">
+      <div style="font-size:0.9rem;font-weight:700;color:#c2410c;margin-bottom:4px;">🦷 עקירת לסת תחתונה — בדיקת תחושה עצבית חובה</div>
+      <div style="font-size:0.79rem;color:#9a3412;line-height:1.6;">עקירת שן בינה תחתונה עלולה לגעת בעצב האלוואולרי התחתון (עצב III). יש לבדוק ולתעד תחושה עכשיו ובמעקב.</div>
+    </div>
+    <div style="font-size:0.83rem;font-weight:700;color:#374151;margin-bottom:10px;">סמן את מצב התחושה כרגע (מיד לאחר הניתוח):</div>
+    <div style="display:grid;gap:8px;">
+      <label class="allergy-item" onclick="toggleAllergy(this)" style="border-color:#e5e7eb;">
+        <input type="checkbox" value="neuro_lip"><div class="allergy-box">✓</div>
+        <span class="allergy-label">👄 חוסר תחושה / עקצוץ בשפה התחתונה</span>
+      </label>
+      <label class="allergy-item" onclick="toggleAllergy(this)" style="border-color:#e5e7eb;">
+        <input type="checkbox" value="neuro_chin"><div class="allergy-box">✓</div>
+        <span class="allergy-label">🫦 חוסר תחושה / עקצוץ בסנטר</span>
+      </label>
+      <label class="allergy-item" onclick="toggleAllergy(this)" style="border-color:#e5e7eb;">
+        <input type="checkbox" value="neuro_tongue"><div class="allergy-box">✓</div>
+        <span class="allergy-label">👅 חוסר תחושה / עקצוץ בלשון</span>
+      </label>
+    </div>
+    <div id="neuroAlert" class="alert-box" style="margin-top:10px;"></div>
+    <div style="background:#fef2f2;border-radius:10px;padding:11px;margin-top:10px;font-size:0.79rem;color:#991b1b;line-height:1.7;">
+      <strong>⚠️ חשוב:</strong> חוסר תחושה זמני לאחר ניתוח שכיח ובדרך כלל חולף תוך שעות עד ימים. אם חוסר התחושה <strong>לא חולף תוך 48–72 שעות</strong> — פנה לכירורג לתיעוד ומעקב. אין להיבהל — רוב המקרים חולפים מעצמם.
+    </div>
+  </div>
+
+  <div class="card" id="upperJawCard" style="display:none;border:2px solid #3b82f6;">
+    <div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:10px;padding:12px;margin-bottom:12px;">
+      <div style="font-size:0.9rem;font-weight:700;color:#1e3a8a;margin-bottom:4px;">🦷 עקירת לסת עליונה — בדיקת תקשורת פה-אף חובה</div>
+      <div style="font-size:0.79rem;color:#1e40af;line-height:1.6;">שיני הבינה העליונות קרובות לרצפת הסינוס המקסילרי. עקירה עלולה ליצור פתח בין חלל הפה לאף (OAC).</div>
+    </div>
+    <div style="font-size:0.83rem;font-weight:700;color:#374151;margin-bottom:10px;">🔍 בדיקת תקשורת פה-אף (Valsalva / Nose-blowing test):</div>
+    <div style="background:#f0f9ff;border-radius:10px;padding:12px;margin-bottom:10px;font-size:0.81rem;color:#0c4a6e;line-height:1.8;">
+      <strong>כיצד לבדוק:</strong><br>
+      1. בקש מהמטופל לאטום את הנחיריים ולנסות לנשוף בעדינות דרך האף<br>
+      2. ✅ <strong>תקין:</strong> אין מעבר אוויר / נוזלים לפה<br>
+      3. ⚠️ <strong>חשוד OAC:</strong> מעבר אוויר, נוזל, או גרגור מהשקע
+    </div>
+    <div style="display:grid;gap:8px;">
+      <label class="allergy-item" onclick="toggleSinus(this,'sinus_negative')" id="sinus_neg_label" style="border-color:#10b981;">
+        <input type="checkbox" value="sinus_negative"><div class="allergy-box" style="border-color:#10b981;">✓</div>
+        <span class="allergy-label" style="color:#065f46;">✅ בדיקה שלילית — אין מעבר פה-אף</span>
+      </label>
+      <label class="allergy-item" onclick="toggleSinus(this,'sinus_positive')" id="sinus_pos_label" style="border-color:#e5e7eb;">
+        <input type="checkbox" value="sinus_positive"><div class="allergy-box">✓</div>
+        <span class="allergy-label">⚠️ בדיקה חיובית — נמצא מעבר פה-אף</span>
+      </label>
+    </div>
+    <div id="sinusAlert" class="alert-box" style="margin-top:10px;"></div>
+    <div style="background:#eff6ff;border-radius:10px;padding:11px;margin-top:10px;font-size:0.79rem;color:#1e40af;line-height:1.7;">
+      <strong>📋 הוראות לאחר עקירה עליונה:</strong> הימנע מניקוי אף בחוזקה, עיטוש בפה פתוח, שימוש בקשית, ועישון. אם יש הפרשה מהאף לאחר שתייה — פנה לכירורג מיד.
+    </div>
+  </div>
+
+  <button class="start-btn" onclick="confirmIntake()">✅ אישור ותחילת מעקב החלמה</button>
+</div>
+
+<!-- ═══ כאב VAS ═══ -->
+<div id="vas" class="section">
+  <div class="section-title">📊 דירוג כאב יומי (VAS)</div>
+  <div class="card">
+    <p style="font-size:0.8rem;color:#6b7280;margin-bottom:14px;">סולם VAS מודד את הכאב שלך מ-<strong>0</strong> (ללא כאב) עד <strong>10</strong> (כאב בלתי נסבל). יש לרשום פעם ביום — רצוי באותה שעה בכל יום.</p>
+    <div class="vas-score-display">
+      <div class="vas-emoji" id="vasEmoji">😐</div>
+      <div class="vas-number" id="vasNumber" style="color:#f59e0b;">5</div>
+      <div class="vas-descriptor" id="vasDesc" style="color:#d97706;">כאב בינוני</div>
+    </div>
+    <div class="vas-faces">
+      <div class="vas-face" data-val="0" onclick="setVasFace(0)">😊<div class="face-val">0</div></div>
+      <div class="vas-face" data-val="2" onclick="setVasFace(2)">🙂<div class="face-val">2</div></div>
+      <div class="vas-face" data-val="4" onclick="setVasFace(4)">😐<div class="face-val">4</div></div>
+      <div class="vas-face" data-val="6" onclick="setVasFace(6)">😟<div class="face-val">6</div></div>
+      <div class="vas-face" data-val="8" onclick="setVasFace(8)">😣<div class="face-val">8</div></div>
+      <div class="vas-face" data-val="10" onclick="setVasFace(10)">😭<div class="face-val">10</div></div>
+    </div>
+    <input type="range" class="vas-slider" id="vasSlider" min="0" max="10" value="5" oninput="updateVas(this.value)">
+    <div class="vas-labels"><span>10 — חמור</span><span>5 — בינוני</span><span>0 — ללא כאב</span></div>
+    <div id="vasAlert" class="alert-box" style="margin-top:12px;"></div>
+    <button class="save-btn" id="vasSaveBtn" onclick="saveVasScore()">💾 שמור דירוג היום</button>
+  </div>
+  <div class="card" id="vasHistoryCard" style="display:none;">
+    <div class="section-title">📈 היסטוריית כאב</div>
+    <div id="vasHistory"></div>
+  </div>
+</div>
+
+<!-- ═══ שאלון תופעות ═══ -->
+<div id="sideeffect" class="section">
+  <div class="section-title">🔍 בדיקת תופעות יומית</div>
+  <div id="seQuestions">
+    <div class="q-dots" id="qDots"></div>
+    <div class="card">
+      <div class="q-num" id="qNum">שאלה 1 מתוך 8</div>
+      <div class="q-text" id="qText"></div>
+      <div id="qOptions"></div>
+      <div class="q-nav">
+        <button class="btn-next" id="btnNext" onclick="seNext()" disabled>הבא ←</button>
+        <button class="btn-back" onclick="seBack()">→ חזור</button>
+      </div>
+    </div>
+  </div>
+  <div id="seResults" style="display:none;">
+    <div style="background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:white;text-align:center;padding:20px;border-radius:16px;margin-bottom:14px;">
+      <div style="font-size:2rem;margin-bottom:8px;" id="rIcon">✅</div>
+      <h2 style="font-size:1.05rem;margin-bottom:5px;" id="rTitle">הבדיקה הושלמה</h2>
+      <p style="font-size:0.8rem;opacity:0.9;" id="rSub"></p>
+    </div>
+    <div id="rCards"></div>
+    <button class="save-btn" onclick="resetSE()">🔄 בצע שוב</button>
+  </div>
+</div>
+
+<!-- ═══ החלמה ═══ -->
+<div id="recovery" class="section">
+  <div class="card">
+    <div class="day-counter">
+      <button onclick="changeDay(1)">+</button>
+      <div><div class="day-number" id="dayNum">1</div><div class="day-label">יום לאחר הניתוח</div></div>
+      <button onclick="changeDay(-1)">−</button>
+    </div>
+    <div id="stageLabel" class="stage-badge stage-critical">🔴 שלב קריטי — ימים 1–2</div>
+    <div id="dayTips"></div>
+  </div>
+</div>
+
+<!-- ═══ תופעות לוואי ═══ -->
+<div id="effects" class="section">
+  <div class="section-title">⚕️ תופעות לוואי נפוצות</div>
+
+  <!-- SWELLING - ENHANCED SECTION -->
+  <div class="effect-card" onclick="toggleEffect(this)">
+    <div class="effect-header">
+      <div class="effect-title">🫥 נפיחות <span class="badge badge-monitor">צפויה</span></div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="effect-body">
+      <!-- Swelling timeline chart -->
+      <div style="background:#fff7ed;border-radius:12px;padding:13px;margin-bottom:14px;border:2px solid #fed7aa;">
+        <p style="font-weight:700;font-size:0.86rem;color:#c2410c;margin-bottom:10px;">📈 ציר הזמן של הנפיחות — זה תהליך תקין!</p>
+        <div class="sw-peak-label">🔺 שיא הנפיחות — יום 2–3</div>
+        <div class="swelling-timeline">
+          <div class="sw-day sw-day7"><div class="sw-day-bar"></div><div class="sw-label">יום 7</div></div>
+          <div class="sw-day sw-day6"><div class="sw-day-bar"></div><div class="sw-label">יום 6</div></div>
+          <div class="sw-day sw-day5"><div class="sw-day-bar"></div><div class="sw-label">יום 5</div></div>
+          <div class="sw-day sw-day4"><div class="sw-day-bar"></div><div class="sw-label">יום 4</div></div>
+          <div class="sw-day sw-day3"><div class="sw-day-bar">שיא</div><div class="sw-label">יום 3</div></div>
+          <div class="sw-day sw-day2"><div class="sw-day-bar"></div><div class="sw-label">יום 2</div></div>
+          <div class="sw-day sw-day1"><div class="sw-day-bar"></div><div class="sw-label">יום 1</div></div>
+        </div>
+        <p style="font-size:0.78rem;color:#374151;margin-top:8px;line-height:1.7;">
+          ✅ <strong>ימים 1–3:</strong> הנפיחות <strong>גדלה ומחמירה</strong> — זה תקין לחלוטין.<br>
+          ✅ <strong>יום 3:</strong> שיא הנפיחות — הפנים עשויות להיראות נפוחות מאוד.<br>
+          ✅ <strong>ימים 4–7:</strong> הנפיחות <strong>מתחילה לרדת בהדרגה</strong>.<br>
+          ✅ <strong>שבוע 2:</strong> רוב הנפיחות תיעלם.
+        </p>
+      </div>
+
+      <div class="sw-warning-box">
+        <h4>🚨 מתי לפנות לכירורג מיד?</h4>
+        <ul>
+          <li>הנפיחות <strong>ממשיכה לגדול מעבר ליום 3</strong> ואינה מתחילה לרדת</li>
+          <li>הכאב <strong>מחמיר</strong> לאחר שהיה בירידה — במיוחד אחרי יום 3</li>
+          <li>הנפיחות מתפשטת <strong>לצוואר, לסנטר או לאזור הגרון</strong></li>
+          <li>קושי <strong>לבלוע או לנשום</strong></li>
+          <li>חום מעל 38.5°C יחד עם נפיחות גוברת</li>
+          <li>עור אדום ורותח מעל אזור הנפיחות</li>
+        </ul>
+      </div>
+
+      <p style="font-size:0.82rem;color:#374151;margin-top:12px;line-height:1.7;"><strong>כיצד להקל על הנפיחות:</strong></p>
+      <ul>
+        <li>קרח — 20 דקות פעיל / 20 דקות הפסקה — ב-48 שעות הראשונות</li>
+        <li>לאחר 48 שעות — מעבר לחבישות חמות</li>
+        <li>ישן עם ראש מורם על 2 כריות</li>
+        <li>נוגד דלקת (כגון איבופרופן) לפי המרשם</li>
+        <li>מנוחה ומזון קר ורך ב-48 שעות הראשונות</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="effect-card" onclick="toggleEffect(this)">
+    <div class="effect-header"><div class="effect-title">🩸 דימום <span class="badge badge-normal">תקין</span></div><span class="chevron">▼</span></div>
+    <div class="effect-body">
+      <p>מעט דליפה ב-24–48 שעות הראשונות היא נורמלית לחלוטין.</p>
+      <ul>
+        <li>נשוך על גזה נקייה 30–45 דקות</li>
+        <li>החלף גזה לפי הצורך</li>
+        <li>הימנע משטיפה, יריקה, או קשיות שתייה</li>
+        <li>שמור על ראש מורם</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="effect-card" onclick="toggleEffect(this)">
+    <div class="effect-header"><div class="effect-title">😣 כאב ואי-נוחות <span class="badge badge-normal">תקין</span></div><span class="chevron">▼</span></div>
+    <div class="effect-body">
+      <p>הכאב חזק ביותר ב-48–72 שעות הראשונות ויורד בהדרגה לאחר מכן.</p>
+      <ul>
+        <li>קח תרופות לפי המרשם — אל תדלג על מינונים</li>
+        <li>קרח על הלחי: 20 דקות פעיל / 20 דקות הפסקה</li>
+        <li>אכול מזון קר ורך להרדמה טבעית</li>
+        <li>שמור על ראש מורם</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="effect-card" onclick="toggleEffect(this)">
+    <div class="effect-header"><div class="effect-title">🌀 Dry Socket — שקע יבש <span class="badge badge-urgent">דחוף</span></div><span class="chevron">▼</span></div>
+    <div class="effect-body">
+      <p>כאב פועם וחמור המתחיל 3–5 ימים לאחר הניתוח, הנגרם מאיבוד קריש הדם.</p>
+      <ul>
+        <li>כאב שמחמיר לאחר שהיה בשיפור</li>
+        <li>ריח רע או טעם לא נעים מהשקע</li>
+        <li>שקע ריק וגלוי</li>
+        <li>כאב המקרין לאוזן</li>
+      </ul>
+      <p style="margin-top:8px;font-weight:700;color:#dc2626;">⚠️ פנה לכירורג מיד!</p>
+    </div>
+  </div>
+
+  <div class="effect-card" onclick="toggleEffect(this)">
+    <div class="effect-header"><div class="effect-title">🌡️ חום <span class="badge badge-monitor">מעקב</span></div><span class="chevron">▼</span></div>
+    <div class="effect-body">
+      <p>חום קל עד 38°C ב-1–2 הימים הראשונים עשוי להיות תקין. חום מעל 38.5°C המחזיק מעל 2 ימים — פנה לכירורג.</p>
+    </div>
+  </div>
+
+  <div class="effect-card" onclick="toggleEffect(this)">
+    <div class="effect-header"><div class="effect-title">❌ מה להימנע ממנו <span class="badge badge-urgent">קריטי</span></div><span class="chevron">▼</span></div>
+    <div class="effect-body">
+      <ul>
+        <li>🥤 קשיות שתייה — שאיבה מנתקת את הקריש</li>
+        <li>🚬 עישון — מגדיל משמעותית את הסיכון לשקע יבש</li>
+        <li>🍺 אלכוהול — מפריע לריפוי ולתרופות</li>
+        <li>🔥 מזון ומשקאות חמים — מגבירים דימום</li>
+        <li>🏋️ פעילות גופנית מאומצת — לפחות 3–5 ימים</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ תרופות ═══ -->
+<div id="meds" class="section">
+  <div class="section-title">💊 התרופות שלך — מותאמות אישית</div>
+  <div id="medsAllergyBanner" style="display:none;"></div>
+  <div id="medsContainer"></div>
+  <div id="medsPlaceholder" class="card" style="text-align:center;padding:28px;">
+    <div style="font-size:2.5rem;margin-bottom:10px;">📋</div>
+    <p style="font-weight:700;color:#1e3a8a;font-size:0.95rem;margin-bottom:6px;">יש למלא טופס קבלה תחילה</p>
+    <p style="font-size:0.82rem;color:#6b7280;line-height:1.6;">התרופות שלך יותאמו על פי האלרגיות שלך. מלא את טופס הקבלה לקבלת תכנית טיפול מותאמת אישית.</p>
+    <button onclick="showTab('intake',document.querySelector('.tab-btn'))" style="margin-top:14px;padding:11px 22px;background:#3b82f6;color:white;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.88rem;">עבור לטופס קבלה ←</button>
+  </div>
+  <div id="rinseCard" style="display:none;">
+    <div class="med-card" id="chlorhexidineCard">
+      <div class="med-header"><div class="med-icon">🔵</div><div><div class="med-name">כלורהקסידין 0.12% — שטיפת פה</div><div class="med-type">חומר חיטוי אנטיספטי</div></div></div>
+      <div class="dose-row"><div class="dose-box"><div class="label">כמות</div><div class="value">10–15 מ"ל</div></div><div class="dose-box"><div class="label">תדירות</div><div class="value">פעמיים ביום</div></div><div class="dose-box"><div class="label">התחלה</div><div class="value">מיום 2+</div></div><div class="dose-box"><div class="label">משך</div><div class="value">1–2 שבועות</div></div></div>
+      <div class="reminder-row"><span>⏰ הגדר תזכורות</span><label class="toggle-switch"><input type="checkbox" onchange="toggleReminder(this,'כלורהקסידין')"><span class="toggle-slider"></span></label></div>
+      <div class="med-warning">⚠️ אין להשתמש ב-24 שעות הראשונות. שטוף בעדינות — אל תירוק בכוח. עלול לגרום לכתמים זמניים בשיניים.</div>
+    </div>
+    <div class="med-card" id="salineRinseCard" style="display:none;border:2px solid #10b981;">
+      <div style="background:#d1fae5;border-radius:8px;padding:7px 12px;margin-bottom:12px;font-size:0.77rem;font-weight:700;color:#065f46;">🔄 חלופה — אלרגיה לכלורהקסידין</div>
+      <div class="med-header"><div class="med-icon">🧂</div><div><div class="med-name">שטיפה במי מלח חמים</div><div class="med-type">חלופה אנטיספטית</div></div></div>
+      <div class="dose-row"><div class="dose-box"><div class="label">הכנה</div><div class="value">½ כפית מלח</div></div><div class="dose-box"><div class="label">ב-</div><div class="value">כוס מים חמים</div></div><div class="dose-box"><div class="label">תדירות</div><div class="value">3× ביום</div></div><div class="dose-box"><div class="label">התחלה</div><div class="value">מיום 2+</div></div></div>
+      <div class="reminder-row"><span>⏰ הגדר תזכורות</span><label class="toggle-switch"><input type="checkbox" onchange="toggleReminder(this,'שטיפת מי מלח')"><span class="toggle-slider"></span></label></div>
+      <div class="med-warning">✅ חלופה בטוחה לאלרגיה לכלורהקסידין. שטוף בעדינות לאחר כל ארוחה.</div>
+    </div>
+  </div>
+  <div id="medsDisclaimer" style="display:none;background:#f0f4ff;border-radius:11px;padding:13px;font-size:0.79rem;color:#374151;line-height:1.7;margin-top:4px;">
+    <strong>📌 חשוב:</strong> התרופות המפורטות מותאמות על פי האלרגיות שדיווחת עליהן. אשר תמיד עם הכירורג לפני נטילה. אלו המלצות קליניות בלבד — הכירורג המטפל קובע את הטיפול הסופי.
+  </div>
+</div>
+
+<!-- ═══ תזונה ═══ -->
+<div id="food" class="section">
+  <div class="section-title">🥣 מדריך תזונה</div>
+  <div class="cold-banner">
+    <h2>🧊 48 שעות ראשונות: מזון רך וקר בלבד</h2>
+    <p>מזון קר <strong>מצמצם דימום, נפיחות וכאב</strong> על ידי כיווץ כלי הדם. מזון רך מגן על קריש הדם. הימנע מכל מזון חם, קשה, פריך או לעיס.</p>
+  </div>
+  <div class="food-phase" style="border:2px solid #93c5fd;">
+    <h3>🧊 שעות 0–48: רך וקר בלבד</h3>
+    <div class="food-grid">
+      <div class="food-list yes"><h4>✅ מותר</h4><ul><li>גלידה (פשוטה)</li><li>יוגורט קר</li><li>שייק קר (ללא קשית)</li><li>רסק תפוחים קר</li><li>פודינג / ג'לי קר</li><li>יוגורט קפוא / סורבה</li><li>בננה מעוכה קרה</li><li>מרק קר / צמחי מרפא קר</li></ul></div>
+      <div class="food-list no"><h4>❌ אסור</h4><ul><li>מרקים חמים / שתייה חמה</li><li>מזון חם</li><li>מזון קשה / פריך</li><li>קשיות שתייה</li><li>אלכוהול / גזוז</li><li>מיצים חומציים</li><li>מזון חריף</li><li>מזון לעיס / דביק</li></ul></div>
+    </div>
+    <div style="margin-top:11px;padding:10px;background:#eff6ff;border-radius:9px;font-size:0.79rem;color:#1d4ed8;line-height:1.6;">💡 <strong>מדוע קר?</strong> הקור מכווץ כלי דם — מפחית דימום, נפיחות וכאב באופן טבעי מבפנים.</div>
+  </div>
+  <div class="food-phase">
+    <h3>📅 ימים 3–5: מזון רך (טמפרטורת חדר)</h3>
+    <div class="food-grid">
+      <div class="food-list yes"><h4>✅ מותר</h4><ul><li>פירה (לא חם)</li><li>ביצים מקושקשות רכות</li><li>יוגורט ופודינג</li><li>פסטה ואורז רכים</li><li>בננה ואבוקדו</li><li>דג רך</li><li>חומוס</li></ul></div>
+      <div class="food-list no"><h4>❌ אסור</h4><ul><li>חטיפים פריכים</li><li>אגוזים וזרעים</li><li>בשר לעיס</li><li>לחם קשה / קרום</li><li>פופקורן</li><li>מזון חריף / חם מאוד</li></ul></div>
+    </div>
+  </div>
+  <div class="food-phase">
+    <h3>📅 ימים 6–14: מזון חצי-מוצק</h3>
+    <div class="food-grid">
+      <div class="food-list yes"><h4>✅ מותר</h4><ul><li>עוף מבושל רך</li><li>ירקות מבושלים</li><li>פנקייק ולחם רך</li><li>גבינה</li><li>דגנים מבושלים היטב</li></ul></div>
+      <div class="food-list no"><h4>❌ עדיין אסור</h4><ul><li>ממתקים קשים</li><li>צ'יפס ועוגיות</li><li>ממתקים דביקים</li><li>ירקות נאים קשים</li><li>אלכוהול</li></ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ חירום ═══ -->
+<div id="emergency" class="section">
+  <div class="emergency-banner">
+    <h2>🚨 מצב חירום</h2>
+    <p>אם חווית סיבוך חמור — פנה לעזרה מיידית</p>
+    <a href="tel:101" class="call-btn">📞 חייג לכירורג</a>
+  </div>
+  <div class="warning-card">
+    <h3>🩸 דימום בלתי נשלט</h3>
+    <ul>
+      <li>דימום שאינו עוצר לאחר 45+ דקות של לחץ יציב</li>
+      <li>ספיגת מספר פדים תוך דקות</li>
+    </ul>
+  </div>
+  <div class="warning-card">
+    <h3>🫥 נפיחות מסוכנת — פנה מיד!</h3>
+    <ul>
+      <li>נפיחות שממשיכה לגדול <strong>לאחר יום 3</strong> ואינה מתחילה לרדת</li>
+      <li>נפיחות המתפשטת לצוואר, סנטר, או אזור הגרון</li>
+      <li>קושי בבליעה או בנשימה</li>
+      <li>עור אדום ורותח מעל הנפיחות</li>
+      <li>כאב שמחמיר בפתאומיות לאחר שהיה בשיפור</li>
+    </ul>
+  </div>
+  <div class="warning-card">
+    <h3>🌡️ סימני זיהום חמור</h3>
+    <ul>
+      <li>חום מעל 38.5°C</li>
+      <li>כאב גובר במהירות</li>
+      <li>מוגלה או ריח רע מהשקע</li>
+    </ul>
+  </div>
+  <div class="warning-card">
+    <h3>🌀 Dry Socket — שקע יבש</h3>
+    <ul>
+      <li>כאב פועם חמור המתחיל 3–5 ימים לאחר הניתוח</li>
+      <li>כאב המקרין לאוזן או לרקה</li>
+    </ul>
+  </div>
+  <div class="warning-card">
+    <h3>💊 תגובה אלרגית לתרופה</h3>
+    <ul>
+      <li>פריחה, אורטיקריה, או תגובת עור</li>
+      <li>נפיחות בפנים / קושי בנשימה</li>
+      <li>כאבי בטן חמורים או הקאות</li>
+    </ul>
+  </div>
+  <div style="background:#d1fae5;border-radius:12px;padding:13px;margin-top:4px;border:2px solid #6ee7b7;font-size:0.81rem;color:#065f46;line-height:1.7;">
+    <strong>📌 זכור:</strong> כשיש ספק — התקשר לכירורג או פנה לחדר מיון. סיבוכים שמאובחנים מוקדם קל הרבה יותר לטפל בהם.
+  </div>
+</div>
+
+<!-- ═══ הסכמה לטיפול ═══ -->
+<div id="consent" class="section">
+  <div class="intake-hero">
+    <h2>✍️ טופס קבלה והסכמה לטיפול</h2>
+    <p>ממלאים פעם אחת — הפרטים מועתקים לכל הלשוניות</p>
+  </div>
+
+  <!-- ══ פרטי רופא ומרפאה ══ -->
+  <!-- ══ סוג הטיפול ══ -->
+  <div class="card">
+    <div class="section-title">🦷 פרטי הטיפול</div>
+    <div style="margin-bottom:10px;">
+      <label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:6px;">סוג הניתוח (סמן):</label>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.84rem;cursor:pointer;padding:8px 12px;background:#f8faff;border-radius:8px;border:2px solid #e5e7eb;"><input type="checkbox" id="c_surgical"> טיפול כירורגי</label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.84rem;cursor:pointer;padding:8px 12px;background:#f8faff;border-radius:8px;border:2px solid #e5e7eb;"><input type="checkbox" id="c_extraction"> עקירת שן</label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.84rem;cursor:pointer;padding:8px 12px;background:#f8faff;border-radius:8px;border:2px solid #e5e7eb;"><input type="checkbox" id="c_apicectomy"> כריתת חוד השורש</label>
+      </div>
+    </div>
+    <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">תיאור הטיפול:</label>
+      <input type="text" id="c_treatment" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="עקירת שן בינה 38 תחתונה שמאל..."></div>
+  </div>
+
+  <div class="card" style="background:#fffbeb;border:1px solid #fde68a;">
+    <div class="section-title" style="color:#92400e;">📜 פירוט הטיפול — הסבר לחולה</div>
+    <div style="font-size:0.81rem;color:#374151;line-height:2;">
+      הוסברו לי התוצאות המקוות, ודרכי הטיפול החלופיות האפשריות בנסיבות המקרה וכן התוצאות העלולות לנבוע מחוסר טיפול.<br>
+      הוסברה לי חשיבות הפסקת העישון לפני ואחרי הטיפול, טיפול במחלת חניכיים ואיזון מחלת הסוכרת.<br>
+      הוסבר לי שעישון, מחלת חניכיים לא מטופלת וסוכרת, מגבירים באופן משמעותי את הסיכון לסיבוכים.<br>
+      כמו כן הוסבר לי על הכירורגיה יחד עם תרופות ממשפחת הביפוספוסטים, בהווה או בעבר — קיים סיכון לטיפול ב״בריחת סידן״ ו/או בטיפול במחלות של העצמות.<br>
+      הוסברו לי תופעות הלוואי של הטיפול העיקרי, לרבות: נפיחות, כאב, שטפי דם תת עוריים והגבלה בפתיחת הפה לפרק זמן מוגבל.<br>
+      כמו כן הוזהרתי מהסיכונים האפשריים: פגיעה מכנית או לחץ על עצבים תחושתיים (בעיקר העצב המנטלי / האינפראורביטלי) העלולה לגרום לשינויי תחושה — נימול, עקצוץ או הפחתת תחושה זמנית ולעיתים נדירות קבועה — בשפה, בסנטר, בלשון או בלחי. אפשרות לפגיעה בסינוס המקסילרי בעקירות עליונות, נפיחות וכאב לאחר הניתוח, והגבלה זמנית בפתיחת הפה.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">✅ הצהרת הסכמה</div>
+    <div style="font-size:0.81rem;color:#374151;line-height:2;margin-bottom:14px;">
+      אני נתתי/ת את הסכמתי לביצוע הטיפול העיקרי. הסכמתי ניתנת, בזאת גם, לביצוע הרדמה מקומית ואחר שהסביר לי הסיכונים והסיכוכים שהוסברו לי לאחר שהוא הרדמה מקומית.<br>
+      <strong>אם יוחלט לבצע את הטיפול העיקרי בהרדמה כללית או בטשטוש לוורייד יינתן לי הסבר על ההרדמה על ידי רופא מרדים.</strong>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">תאריך חתימה</label>
+        <input type="date" id="c_date" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;"></div>
+      <div><label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">שם פרטי של חותם/ת</label>
+        <input type="text" id="c_signerName" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="שם החותם"></div>
+    </div>
+    <div style="background:#f8faff;border-radius:10px;padding:12px;margin-bottom:12px;">
+      <div style="font-size:0.78rem;font-weight:700;color:#1e3a8a;margin-bottom:8px;">חתימה דיגיטלית</div>
+      <canvas id="signaturePad" style="width:100%;height:130px;border:2px solid #1e3a8a;border-radius:8px;background:white;touch-action:none;display:block;cursor:crosshair;"></canvas>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+        <button onclick="clearSignature()" style="padding:8px 14px;background:#fee2e2;color:#dc2626;border:none;border-radius:8px;font-size:0.78rem;font-weight:600;cursor:pointer;">🗑 נקה</button>
+        <button onclick="saveConsent()" style="padding:8px 16px;background:#1e3a8a;color:white;border:none;border-radius:8px;font-size:0.82rem;font-weight:700;cursor:pointer;flex:1;">✅ שמור ושלח לרופא</button>
+      </div>
+    </div>
+    <div id="consentSavedMsg" style="display:none;background:#d1fae5;border-radius:12px;padding:14px;margin-top:4px;">
+      <div style="font-size:0.85rem;font-weight:700;color:#065f46;margin-bottom:10px;">✅ ההסכמה נשמרה! שלח עותק לרופא:</div>
+      <div style="display:grid;gap:8px;">
+        <button onclick="sendConsentEmail()" style="width:100%;padding:11px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:0.85rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">📧 שלח מייל לרופא</button>
+        <button onclick="sendConsentWhatsApp()" style="width:100%;padding:11px;background:#25D366;color:white;border:none;border-radius:10px;font-size:0.85rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">📱 שלח WhatsApp לרופא</button>
+        <button onclick="printConsent()" style="width:100%;padding:11px;background:#f97316;color:white;border:none;border-radius:10px;font-size:0.85rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">🖨️ הדפס / שמור כ-PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border:2px solid #1e3a8a;">
+    <div style="font-size:0.82rem;font-weight:700;color:#1e3a8a;margin-bottom:8px;">👨‍⚕️ פרטי הרופא המאשר</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+      <div><label style="font-size:0.75rem;color:#6b7280;display:block;margin-bottom:3px;">שם הרופא</label>
+        <div id="c_drName" style="font-size:0.85rem;font-weight:600;color:#374151;padding:6px;background:#f8faff;border-radius:6px;" onclick="showTab('intake',document.querySelector('.tab-btn'))">— לחץ למילוי בקבלה</div></div>
+      <div><label style="font-size:0.75rem;color:#6b7280;display:block;margin-bottom:3px;">מס׳ רישיון</label>
+        <div id="c_drLicense" style="font-size:0.85rem;font-weight:600;color:#374151;padding:6px;background:#f8faff;border-radius:6px;">—</div></div>
+      <div><label style="font-size:0.75rem;color:#6b7280;display:block;margin-bottom:3px;">מרפאה</label>
+        <div id="c_drClinic" style="font-size:0.85rem;font-weight:600;color:#374151;padding:6px;background:#f8faff;border-radius:6px;">—</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ הוראות לאחר טיפול ═══ -->
+<div id="instructions" class="section">
+  <div class="intake-hero" style="background:linear-gradient(135deg,#065f46,#10b981);">
+    <h2>📄 הוראות לאחר טיפול כירורגי בחלל הפה</h2>
+    <p>פעולה כירורגית בחלל הפה כרוכה בפציעה של רקמות רכות</p>
+  </div>
+
+  <div class="card" style="border-right:4px solid #dc2626;">
+    <div class="section-title" style="color:#dc2626;">🔴 הנחיות ליום הטיפול</div>
+    <div style="display:grid;gap:8px;">
+      <div style="background:#fef2f2;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;"><span style="font-weight:700;">🩸 דימום</span> — מיד לאחר הטיפול יש ללחוץ קלות על אתר הטיפול עם תחבושת (גזה) למשך 20 דקות</div>
+      <div style="background:#fef2f2;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;"><span style="font-weight:700;">🍽️ אכילה ושתייה</span> — אין לאכול או לשתות כלל בשעתיים הראשונות שלאחר הטיפול. במהלך 24 השעות לאחר הטיפול יש לאכול רק אוכל רך וקר, וכן להמנע משתייה חמה</div>
+      <div style="background:#fef2f2;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;"><span style="font-weight:700;">🚭 עישון ואלכוהול</span> — אין לעשן או לשתות אלכוהול במהלך היום שלאחר הטיפול. עישון פוגע מאוד בהצלחת הטיפול ויש להמנע ממנו תקופה ממושכת ככל האפשר</div>
+      <div style="background:#fef2f2;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;"><span style="font-weight:700;">🪥 היגיינה</span> — במהלך היום שלאחר הניתוח אין לשטוף את הפה ואין לצחצח שיניים</div>
+      <div style="background:#fef2f2;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;"><span style="font-weight:700;">💧 דם ורוק</span> — ייתכן דימום קל או רוק דמי בחלל הפה ביום שלאחר העקירה. יש לבלוע את עודפי הרוק או לגנגב, וכן להמנע מחלוטין מהריקה שלהם</div>
+    </div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #f97316;">
+    <div class="section-title" style="color:#f97316;">🟠 הנחיות לימים שלאחר הטיפול</div>
+    <div style="display:grid;gap:8px;">
+      <div style="background:#fff7ed;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;"><span style="font-weight:700;">🦷 צחצוח שיניים</span> — ביום שלאחר הטיפול יש לחזור ולחקפיד על צחצוח שיניים. בימים הראשונים יש להמנע מלחצוץ ישירות על אתר הניתוח</div>
+      <div style="background:#fff7ed;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;"><span style="font-weight:700;">🫧 שטיפת פה</span> — ממליצים לשטוף את הפה בתמיסות פה אנטיספטיות או מי מלח. אנו ממליצים לשטוף את הפה בתמיסות פה המכילות כלורהקסידין פעמיים ביום, למשך שבוע מהטיפול ועד יום הוצאת התפרים</div>
+      <div style="background:#fff7ed;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;"><span style="font-weight:700;">🏃 פעילות גופנית</span> — מוטב למעט ככול האפשר בפעילויות גופניות במשך הימים הראשונים שלאחר הטיפול</div>
+      <div style="background:#fff7ed;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;"><span style="font-weight:700;">🪡 תפרים</span> — במידה והנכם מרכיבים שיניים תותבות נשלפות אנא התייעצו אתנו מתי ניתן לחזור ולהרכיבן</div>
+    </div>
+  </div>
+
+  <div class="card" style="border-right:4px solid #ef4444;">
+    <div class="section-title" style="color:#ef4444;">🚨 תופעות לוואי — מה לצפות</div>
+    <div style="display:grid;gap:8px;">
+      <div style="background:#fef2f2;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;">
+        <span style="font-weight:700;">🩸 דימום</span> — שעות מספר אחרי הניתוח ייתכן דימום קל. אם הדימום מתגבר יש לקחת ספוגית גזה לחה, לקפל ולהניח תחת לחץ באזור הטיפול למשך 20 דקות. אין לשטוף את הפה ואין לגנגב. אם הדימום אינו נפסק מאתר הטיפול יש ליצור קשר עם הרופא.
+      </div>
+      <div style="background:#fef2f2;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;">
+        <span style="font-weight:700;">🫥 נפיחות</span> — נפיחות הינה תופעה שכיחה ביום הניתוח ולאחריו. הנפיחות מגיעה לשיאה בדרך כלל ביום 2–3 ואז פוחתת בהדרגה. כדי להפחית נפיחות: קרח מחוץ לפנים ב-48 שעות הראשונות, לאחר מכן חמים
+      </div>
+      <div style="background:#fef2f2;border-radius:8px;padding:10px;font-size:0.82rem;color:#374151;line-height:1.7;">
+        <span style="font-weight:700;">😣 כאב</span> — צפוי בימים הראשונים, נשלט עם תרופות לפי המרשם. אם הכאב מחמיר לאחר שיפור — פנה לרופא
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="background:#eff6ff;border:2px solid #3b82f6;">
+    <div style="font-size:0.85rem;font-weight:700;color:#1e3a8a;margin-bottom:8px;">📞 פרטי קשר לחזרה</div>
+    <div id="instr_contact" style="font-size:0.83rem;color:#374151;line-height:2;">
+      <span style="color:#6b7280;">טוען פרטים...</span>
+    </div>
+  </div>
+</div>
+<!-- ═══ טרום ניתוח ═══ -->
+<div id="preop" class="section">
+  <div class="intake-hero" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">
+    <h2>🩺 הערכה טרום-ניתוחית</h2>
+    <p>פרופילקסיס, מדללי דם וטיפול מקדים</p>
+  </div>
+
+  <!-- ══ אנמנזה: מדללי דם ══ -->
+  <div class="card" style="border:2px solid #dc2626;">
+    <div class="section-title" style="color:#dc2626;">💊 אנמנזה — טיפול במדללי דם</div>
+    
+    <div style="margin-bottom:12px;">
+      <label style="font-size:0.82rem;font-weight:700;color:#374151;display:block;margin-bottom:8px;">האם המטופל נוטל מדלל דם?</label>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.85rem;cursor:pointer;padding:8px 16px;background:#f8faff;border-radius:8px;border:2px solid #e5e7eb;" id="blood_yes_label">
+          <input type="radio" name="bloodThinner" value="yes" onchange="toggleBloodThinner(true)"> כן
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.85rem;cursor:pointer;padding:8px 16px;background:#f8faff;border-radius:8px;border:2px solid #e5e7eb;" id="blood_no_label">
+          <input type="radio" name="bloodThinner" value="no" onchange="toggleBloodThinner(false)"> לא
+        </label>
+      </div>
+    </div>
+
+    <div id="bloodThinnerDetails" style="display:none;">
+      <!-- סוג התרופה -->
+      <div style="margin-bottom:12px;">
+        <label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:6px;">סוג מדלל הדם:</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="bloodDrugGrid">
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px;background:#fff7ed;border-radius:8px;border:2px solid #fed7aa;"><input type="checkbox" value="warfarin" onchange="savePrOp()"> וורפרין (קומדין)</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px;background:#fff7ed;border-radius:8px;border:2px solid #fed7aa;"><input type="checkbox" value="aspirin_anti" onchange="savePrOp()"> אספירין (נוגד טסיות)</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px;background:#fff7ed;border-radius:8px;border:2px solid #fed7aa;"><input type="checkbox" value="clopidogrel" onchange="savePrOp()"> קלופידוגרל (פלביקס)</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px;background:#fff7ed;border-radius:8px;border:2px solid #fed7aa;"><input type="checkbox" value="rivaroxaban" onchange="savePrOp()"> ריבארוקסאבן (זארלטו)</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px;background:#fff7ed;border-radius:8px;border:2px solid #fed7aa;"><input type="checkbox" value="apixaban" onchange="savePrOp()"> אפיקסאבן (אליקיס)</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px;background:#fff7ed;border-radius:8px;border:2px solid #fed7aa;"><input type="checkbox" value="dabigatran" onchange="savePrOp()"> דביגטראן (פרדקסה)</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px;background:#fff7ed;border-radius:8px;border:2px solid #fed7aa;"><input type="checkbox" value="enoxaparin" onchange="savePrOp()"> אנוקספארין (קלקסן)</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px;background:#fff7ed;border-radius:8px;border:2px solid #fed7aa;"><input type="checkbox" value="other_blood" onchange="savePrOp()"> אחר</label>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+        <div>
+          <label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">מינון יומי</label>
+          <input type="text" id="bloodDose" oninput="savePrOp()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="לדוג׳ 5 מ״ג / 100 מ״ג">
+        </div>
+        <div>
+          <label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">אינדיקציה (הסיבה לנטילה)</label>
+          <input type="text" id="bloodIndication" oninput="savePrOp()" style="width:100%;padding:9px;border:2px solid #e5e7eb;border-radius:9px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="פרצול, סטנט, פרפור פרוזדורים...">
+        </div>
+      </div>
+
+      <!-- INR section — רק לוורפרין -->
+      <div id="inrSection" style="background:#fef2f2;border:2px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:12px;">
+        <div style="font-size:0.82rem;font-weight:700;color:#dc2626;margin-bottom:8px;">🔬 בדיקת INR (לוורפרין בלבד)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+          <div>
+            <label style="font-size:0.75rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">תוצאת INR אחרונה</label>
+            <input type="number" id="inrValue" step="0.1" min="0.5" max="10" oninput="updateINR()" style="width:100%;padding:9px;border:2px solid #fca5a5;border-radius:9px;font-size:0.9rem;font-family:inherit;text-align:center;font-weight:700;" placeholder="2.5">
+          </div>
+          <div>
+            <label style="font-size:0.75rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">תאריך הבדיקה</label>
+            <input type="date" id="inrDate" oninput="savePrOp()" style="width:100%;padding:9px;border:2px solid #fca5a5;border-radius:9px;font-size:0.82rem;font-family:inherit;">
+          </div>
+          <div>
+            <label style="font-size:0.75rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">מעבדה</label>
+            <input type="text" id="inrLab" oninput="savePrOp()" style="width:100%;padding:9px;border:2px solid #fca5a5;border-radius:9px;font-size:0.82rem;font-family:inherit;text-align:right;" placeholder="מכבי / הדסה...">
+          </div>
+        </div>
+        <div id="inrAlert" style="margin-top:8px;display:none;"></div>
+      </div>
+
+      <!-- המלצה לגבי הפסקה -->
+      <div style="background:#f8faff;border-radius:10px;padding:12px;margin-bottom:10px;">
+        <div style="font-size:0.82rem;font-weight:700;color:#1e3a8a;margin-bottom:8px;">📋 החלטת הרופא לגבי הפסקת הטיפול</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px 12px;background:white;border-radius:8px;border:2px solid #e5e7eb;"><input type="radio" name="bloodDecision" value="continue" onchange="savePrOp()"> המשך ללא הפסקה</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px 12px;background:white;border-radius:8px;border:2px solid #e5e7eb;"><input type="radio" name="bloodDecision" value="stop3" onchange="savePrOp()"> הפסקה 3 ימים לפני</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px 12px;background:white;border-radius:8px;border:2px solid #e5e7eb;"><input type="radio" name="bloodDecision" value="stop5" onchange="savePrOp()"> הפסקה 5 ימים לפני</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;padding:8px 12px;background:white;border-radius:8px;border:2px solid #e5e7eb;"><input type="radio" name="bloodDecision" value="cardio" onchange="savePrOp()"> ייעוץ קרדיולוג תחילה</label>
+        </div>
+        <div>
+          <label style="font-size:0.75rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">הערות הרופא:</label>
+          <textarea id="bloodNotes" oninput="savePrOp()" style="width:100%;border:2px solid #e5e7eb;border-radius:9px;padding:8px;font-size:0.82rem;resize:vertical;min-height:50px;font-family:inherit;text-align:right;" placeholder="הוראות ספציפיות..."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ פרופילקסיס אנטיביוטי ══ -->
+  <div class="card" style="border:2px solid #059669;">
+    <div class="section-title" style="color:#059669;">🦠 פרופילקסיס אנטיביוטי</div>
+
+    <div style="margin-bottom:12px;">
+      <label style="font-size:0.82rem;font-weight:700;color:#374151;display:block;margin-bottom:8px;">סוג הפרופילקסיס:</label>
+      <div style="display:grid;gap:8px;">
+        <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;cursor:pointer;padding:10px;background:#f0fdf4;border-radius:8px;border:2px solid #86efac;">
+          <input type="radio" name="prophylaxis" value="full" onchange="updateProphylaxis()" style="margin-top:2px;">
+          <div><strong>פרופילקסיס מלא</strong><br>
+          <span style="font-size:0.76rem;color:#374151;">אמוקסיצילין 2 גרם שעה לפני הניתוח. אינדיקציה: מחלת לב מסתמית, פגמים מולדים, שתלים ותותבות, ירידה ניכרת בחסינות.</span></div>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;cursor:pointer;padding:10px;background:#f0fdf4;border-radius:8px;border:2px solid #86efac;">
+          <input type="radio" name="prophylaxis" value="partial" onchange="updateProphylaxis()" style="margin-top:2px;">
+          <div><strong>פרופילקסיס חלקי / כיסוי פוסט-אופרטיבי</strong><br>
+          <span style="font-size:0.76rem;color:#374151;">אמוקסיצילין / קלינדמיצין לפי שיקול קליני. אינדיקציה: סוכרת, עישון, ניתוח ממושך, מצב חיסוני ירוד.</span></div>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;cursor:pointer;padding:10px;background:#f9fafb;border-radius:8px;border:2px solid #e5e7eb;">
+          <input type="radio" name="prophylaxis" value="none" onchange="updateProphylaxis()" style="margin-top:2px;">
+          <div><strong>ללא פרופילקסיס</strong><br>
+          <span style="font-size:0.76rem;color:#374151;">מטופל בריא, ניתוח קצר, ללא גורמי סיכון.</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div id="prophylaxisDetails" style="display:none;background:#f0fdf4;border-radius:10px;padding:12px;">
+      <div style="font-size:0.82rem;font-weight:700;color:#065f46;margin-bottom:8px;">💊 תרופה נבחרת</div>
+      <div id="prophylaxisDrugOptions" style="display:grid;gap:8px;"></div>
+      <div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div>
+          <label style="font-size:0.75rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">מינון</label>
+          <input type="text" id="prophylaxisDose" oninput="savePrOp()" style="width:100%;padding:8px;border:2px solid #86efac;border-radius:8px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="2 גרם">
+        </div>
+        <div>
+          <label style="font-size:0.75rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">תזמון</label>
+          <input type="text" id="prophylaxisTiming" oninput="savePrOp()" style="width:100%;padding:8px;border:2px solid #86efac;border-radius:8px;font-size:0.85rem;font-family:inherit;text-align:right;" placeholder="שעה לפני הניתוח">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ טיפול מקדים ══ -->
+  <div class="card" style="border:2px solid #7c3aed;">
+    <div class="section-title" style="color:#7c3aed;">💉 טיפול מקדים — Pre-medication</div>
+    <div style="font-size:0.78rem;color:#6b7280;margin-bottom:10px;">בהתאם לאלרגיות המטופל — הסימון אוטומטי מהפרופיל</div>
+
+    <!-- אנטיביוטיקה מקדימה -->
+    <div style="margin-bottom:12px;">
+      <div style="font-size:0.82rem;font-weight:700;color:#374151;margin-bottom:6px;">🦠 אנטיביוטיקה מקדימה</div>
+      <div id="preMedAntibiotics" style="display:grid;gap:6px;"></div>
+    </div>
+
+    <!-- משככי כאבים מקדימים -->
+    <div style="margin-bottom:12px;">
+      <div style="font-size:0.82rem;font-weight:700;color:#374151;margin-bottom:6px;">🟡 משכך כאבים מקדים (Pre-emptive analgesia)</div>
+      <div id="preMedAnalgesics" style="display:grid;gap:6px;"></div>
+    </div>
+
+    <!-- סטרואידים מקדימים -->
+    <div style="margin-bottom:10px;">
+      <div style="font-size:0.82rem;font-weight:700;color:#374151;margin-bottom:6px;">💉 סטרואיד מקדים (הפחתת נפיחות)</div>
+      <div id="preMedSteroids" style="display:grid;gap:6px;"></div>
+    </div>
+
+    <div>
+      <label style="font-size:0.78rem;font-weight:600;color:#374151;display:block;margin-bottom:4px;">הערות הרופא לטיפול מקדים:</label>
+      <textarea id="preMedNotes" oninput="savePrOp()" style="width:100%;border:2px solid #e5e7eb;border-radius:9px;padding:8px;font-size:0.82rem;resize:vertical;min-height:55px;font-family:inherit;text-align:right;" placeholder="הוראות ספציפיות, שינויי מינון, תיאום עם רופא משפחה..."></textarea>
+    </div>
+  </div>
+
+  <!-- ══ סיכום טרום ניתוחי ══ -->
+  <div class="card" style="background:#1e3a8a;color:white;border-radius:14px;">
+    <div style="font-size:0.9rem;font-weight:700;margin-bottom:10px;">📋 סיכום הוראות טרום-ניתוחיות</div>
+    <div id="preopSummary" style="font-size:0.81rem;line-height:2;opacity:0.95;">לחץ על שמור לקבלת סיכום</div>
+    <button onclick="savePrOp()" style="margin-top:12px;width:100%;padding:11px;background:white;color:#1e3a8a;border:none;border-radius:10px;font-size:0.88rem;font-weight:700;cursor:pointer;">💾 שמור הערכה טרום-ניתוחית</button>
+  </div>
+</div>
+
+
+<script>
+// ── TAB ──────────────────────────────────────────────────
+function showTab(id, btn) {
+  if (id === 'consent') setTimeout(initSignaturePad, 100);
+  if (id === 'preop')   setTimeout(initPreop, 50);
+  propagateFields();
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// ── ALLERGY ──────────────────────────────────────────────
+const ALLERGY_MED_VALUES = ['penicillin','nsaids','aspirin','dipyrone','paracetamol','codeine','steroids','local_anaesthesia','chlorhexidine','sulfa','other','latex'];
+
+function getCheckedAllergies() {
+  return [...document.querySelectorAll('#allergyGrid .allergy-item.checked input')]
+    .map(i => i.value).filter(v => ALLERGY_MED_VALUES.includes(v));
+}
+
+// ── SMART MEDICATIONS ────────────────────────────────────
+function buildMedCard({ icon, borderColor, altBadge, name, type, doses, reminderKey, warning }) {
+  const altHtml = altBadge ? `<div style="background:#d1fae5;border-radius:8px;padding:7px 12px;margin-bottom:12px;font-size:0.77rem;font-weight:700;color:#065f46;">${altBadge}</div>` : '';
+  const borderStyle = borderColor ? `border:2px solid ${borderColor};` : '';
+  const doseBoxes = doses.map(d => `<div class="dose-box"><div class="label">${d.label}</div><div class="value">${d.value}</div></div>`).join('');
+  return `<div class="med-card" style="${borderStyle}">
+    ${altHtml}
+    <div class="med-header"><div class="med-icon">${icon}</div><div><div class="med-name">${name}</div><div class="med-type">${type}</div></div></div>
+    <div class="dose-row">${doseBoxes}</div>
+    <div class="reminder-row"><span>⏰ הגדר תזכורות</span><label class="toggle-switch"><input type="checkbox" onchange="toggleReminder(this,'${reminderKey}')"><span class="toggle-slider"></span></label></div>
+    <div class="med-warning">${warning}</div>
+  </div>`;
+}
+
+function renderMedications(allergies) {
+  const container = document.getElementById('medsContainer');
+  const placeholder = document.getElementById('medsPlaceholder');
+  const rinseCard = document.getElementById('rinseCard');
+  const banner = document.getElementById('medsAllergyBanner');
+  const disclaimer = document.getElementById('medsDisclaimer');
+  const chlorCard = document.getElementById('chlorhexidineCard');
+  const salineCard = document.getElementById('salineRinseCard');
+  placeholder.style.display = 'none';
+  rinseCard.style.display = 'block';
+  disclaimer.style.display = 'block';
+  container.innerHTML = '';
+
+  const hasNsaids     = allergies.includes('nsaids') || allergies.includes('aspirin');
+  const hasDipyrone = allergies.includes('dipyrone');
+  const hasParacetamol= allergies.includes('paracetamol');
+  const hasPenicillin = allergies.includes('penicillin');
+  const hasSulfa      = allergies.includes('sulfa');
+  const hasChlorhex   = allergies.includes('chlorhexidine');
+  const hasSteroids   = allergies.includes('steroids');
+  const hasOther      = allergies.includes('other');
+  const hasAnyAllergy = allergies.length > 0;
+
+  // ── Allergy banner ────────────────────────────────────
+  if (hasAnyAllergy) {
+    const nameMap = {
+      penicillin:'פניצילין', nsaids:'NSAIDs/איבופרופן', aspirin:'אספירין',
+      dipyrone:'דיפירון/אופטלגין', paracetamol:'פרצטמול/אקמול',
+      codeine:'קודאין', steroids:'סטרואידים', local_anaesthesia:'הרדמה מקומית',
+      chlorhexidine:'כלורהקסידין', sulfa:'סולפה', other:'אחר', latex:'לטקס'
+    };
+    const names = allergies.map(v => nameMap[v] || v).join(', ');
+    banner.style.display = 'block';
+    banner.innerHTML = `<div style="background:linear-gradient(135deg,#dc2626,#b91c1c);color:white;border-radius:14px;padding:16px;margin-bottom:16px;">
+      <div style="font-size:1.3rem;margin-bottom:6px;">🚨 מרשם מותאם אישית לאלרגיות</div>
+      <div style="font-size:0.82rem;opacity:0.95;line-height:1.6;">אלרגיות שדווחו: <strong>${names}</strong><br>התרופות הותאמו אוטומטית. <strong>אשר עם הכירורג לפני נטילה.</strong></div>
+    </div>`;
+  } else {
+    banner.style.display = 'none';
+  }
+
+  // ── 1. PAIN RELIEF — Primary: Dipyrone (Optalgin) ──
+  container.innerHTML += `<div style="background:#1e3a8a;color:white;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:0.82rem;font-weight:700;">
+    💊 א. משככי כאבים
+  </div>`;
+
+  // Dipyrone (Optalgin) — PRIMARY analgesic
+  if (hasDipyrone) {
+    // Optalgin allergy → fall back to Ibuprofen or Paracetamol
+    if (!hasNsaids) {
+      container.innerHTML += buildMedCard({
+        icon:'🔴', borderColor:'#10b981',
+        altBadge:'🔄 אלרגיה לאופטלגין — איבופרופן נבחר כחלופה',
+        name:'איבופרופן 400 מ"ג (אדוויל / נורופן)',
+        type:'נוגד דלקת ומשכך כאבים — NSAID',
+        doses:[{label:'מינון',value:'400 מ"ג'},{label:'תדירות',value:'כל 6–8 שעות'},{label:'משך',value:'3–5 ימים'},{label:'יחד עם',value:'אוכל / חלב'}],
+        reminderKey:'איבופרופן',
+        warning:'⚠️ קח עם אוכל. אין לחרוג מהמינון היומי. הימנע אם יש כיב קיבה.'
+      });
+    } else if (!hasParacetamol) {
+      container.innerHTML += buildMedCard({
+        icon:'🟠', borderColor:'#10b981',
+        altBadge:'🔄 אלרגיה לאופטלגין + NSAIDs — פרצטמול נבחר',
+        name:'פרצטמול 500 מ"ג (אקמול / דקסמול)',
+        type:'משכך כאבים וקדחת',
+        doses:[{label:'מינון',value:'500–1000 מ"ג'},{label:'תדירות',value:'כל 6–8 שעות'},{label:'משך',value:'3–7 ימים'},{label:'יחד עם',value:'מים'}],
+        reminderKey:'פרצטמול',
+        warning:'⚠️ אין לחרוג מ-4 גרם ב-24 שעות. בדוק תרופות אחרות המכילות פרצטמול.'
+      });
+    } else {
+      container.innerHTML += buildMedCard({
+        icon:'🟣', borderColor:'#f59e0b',
+        altBadge:'⚠️ אלרגיה לאופטלגין + NSAIDs + פרצטמול — נדרשת התייעצות דחופה',
+        name:'קודאין / דיהידרוקודאין (אם נרשם בלבד)',
+        type:'משכך כאבים אופיואידי — מרשם רופא נדרש',
+        doses:[{label:'מינון',value:'30 מ"ג'},{label:'תדירות',value:'כל 4–6 שעות'},{label:'משך',value:'לפי הנחיה בלבד'},{label:'יחד עם',value:'מזון + מים'}],
+        reminderKey:'קודאין',
+        warning:'⚠️ רק לפי מרשם מפורש. אין לנהוג. עלול לגרום לנמנום, עצירות, בחילה.'
+      });
+    }
+  } else if (hasNsaids && hasParacetamol) {
+    // Can't use NSAIDs or paracetamol → Optalgin is the choice
+    container.innerHTML += buildMedCard({
+      icon:'🟡', borderColor:'#10b981',
+      altBadge:'🔄 אלרגיה ל-NSAIDs וגם לפרצטמול — אופטלגין נבחר',
+      name:'דיפירון 500 מ"ג (אופטלגין)',
+      type:'משכך כאבים ונוגד חום — ללא NSAIDs וללא פרצטמול',
+      doses:[{label:'מינון',value:'500 מ"ג'},{label:'תדירות',value:'כל 6–8 שעות'},{label:'משך',value:'3–5 ימים'},{label:'יחד עם',value:'מים'}],
+      reminderKey:'אופטלגין',
+      warning:'⚠️ אפשרות נדירה של אגרנולוציטוזיס — דווח על חום גבוה פתאומי, כאב גרון, או חולשה חמורה. אין לחרוג מ-4 כמוסות ביום.'
+    });
+  } else {
+    // STANDARD — Optalgin replaces paracetamol as primary
+    container.innerHTML += buildMedCard({
+      icon:'🟡', name:'דיפירון 500 מ"ג (אופטלגין)',
+      type:'משכך כאבים ונוגד חום — קו ראשון',
+      doses:[{label:'מינון',value:'500 מ"ג'},{label:'תדירות',value:'כל 6–8 שעות'},{label:'משך',value:'3–5 ימים'},{label:'יחד עם',value:'מים'}],
+      reminderKey:'אופטלגין',
+      warning:'⚠️ אפשרות נדירה של אגרנולוציטוזיס — דווח על חום גבוה פתאומי, כאב גרון, או חולשה חמורה מיד. אין לחרוג מ-4 כמוסות ביום.'
+    });
+    if (!hasNsaids) {
+      container.innerHTML += buildMedCard({
+        icon:'🔴', name:'איבופרופן 400 מ"ג (אדוויל / נורופן)',
+        type:'נוגד דלקת ומשכך כאבים — NSAID — ניתן לשלב עם אופטלגין',
+        doses:[{label:'מינון',value:'400–600 מ"ג'},{label:'תדירות',value:'כל 6–8 שעות'},{label:'משך',value:'3–5 ימים'},{label:'יחד עם',value:'אוכל / חלב'}],
+        reminderKey:'איבופרופן',
+        warning:'⚠️ הימנע אם יש כיב קיבה, בעיות כליות, או אלרגיה לאספירין. ניתן לסירוגין עם אופטלגין להגברת האפקט.'
+      });
+    }
+  }
+
+  // ── 2. COMBINED MEDICATIONS ───────────────────────────
+  container.innerHTML += `<div style="background:#1e3a8a;color:white;border-radius:10px;padding:10px 14px;margin:14px 0 10px;font-size:0.82rem;font-weight:700;">
+    💊 ב. תרופות משולבות (חלופה / תוספת)
+  </div>`;
+
+  container.innerHTML += `<div class="med-card" style="border:2px dashed #a78bfa;background:#faf5ff;">
+    <div style="background:#ede9fe;border-radius:8px;padding:7px 12px;margin-bottom:12px;font-size:0.77rem;font-weight:700;color:#5b21b6;">💡 תרופות משולבות — שאל את הכירורג לגבי התאמה אישית</div>
+    <div style="display:grid;gap:12px;">
+      ${!hasParacetamol && !allergies.includes('codeine') ? `
+      <div style="padding:12px;background:#f8faff;border-radius:10px;border-right:4px solid #8b5cf6;">
+        <div style="font-weight:700;font-size:0.88rem;color:#1e3a8a;margin-bottom:4px;">💊 רוקסט פלוס (Rokacet Plus) — מרשם רופא בלבד</div>
+        <div style="font-size:0.78rem;color:#6b7280;margin-bottom:6px;">Codeine phosphate 15mg + Paracetamol 500mg</div>
+        <div style="font-size:0.79rem;color:#374151;line-height:1.7;">שילוב פרצטמול + קודאין + קפאין לכאב בינוני-חמור שאינו מגיב לתרופות פשוטות. הקפאין מגביר את יעילות משككי הכאבים.</div>
+        <div style="font-size:0.76rem;color:#374151;margin-top:4px;">מינון: קפלית אחת כל 4–6 שעות | מקסימום 6 קפליות ביממה | עד 3 ימים</div>
+        <div style="font-size:0.76rem;color:#9a3412;margin-top:6px;background:#fff7ed;padding:6px;border-radius:6px;">⚠️ מרשם רופא. מכיל קודאין — סיכון להתמכרות מעל 3 ימים. אין לנהוג. אין לשלב עם תרופות אחרות המכילות פרצטמול. אין לאלרגי לפרצטמול או קודאין.</div>
+      </div>` : ''}
+      ${!hasNsaids && !hasParacetamol ? `
+      <div style="padding:12px;background:#f8faff;border-radius:10px;border-right:4px solid #06b6d4;">
+        <div style="font-weight:700;font-size:0.88rem;color:#1e3a8a;margin-bottom:4px;">💊 קומבודקס (Combudoxx)</div>
+        <div style="font-size:0.78rem;color:#6b7280;margin-bottom:6px;">Ibuprofen 200mg + Paracetamol 500mg</div>
+        <div style="font-size:0.79rem;color:#374151;line-height:1.7;">שילוב NSAID עם פרצטמול לכאב בינוני-חמור. שני מנגנוני פעולה שונים ומשלימים. נפוץ לאחר עקירות כירורגיות.</div>
+        <div style="font-size:0.76rem;color:#374151;margin-top:4px;">מינון: כמוסה אחת כל 8–12 שעות עם אוכל | 3–5 ימים</div>
+        <div style="font-size:0.76rem;color:#9a3412;margin-top:6px;background:#fff7ed;padding:6px;border-radius:6px;">⚠️ מכיל NSAIDs ופרצטמול — אין לאלרגי לאחד מהמרכיבים. אין לשלב עם תרופות נוספות המכילות פרצטמול או איבופרופן. קח עם אוכל.</div>
+      </div>` : ''}
+    </div>
+  </div>`;
+
+  // ── 3. STEROIDS ───────────────────────────────────────
+  container.innerHTML += `<div style="background:#1e3a8a;color:white;border-radius:10px;padding:10px 14px;margin:14px 0 10px;font-size:0.82rem;font-weight:700;">
+    💉 ג. טיפול סטרואידי — הפחתת נפיחות
+  </div>`;
+
+  if (hasSteroids) {
+    container.innerHTML += `<div class="card" style="border:2px solid #dc2626;background:#fef2f2;">
+      <div style="font-size:0.83rem;font-weight:700;color:#dc2626;margin-bottom:8px;">🚨 אלרגיה לסטרואידים — טיפול סטרואידי אינו מומלץ</div>
+      <p style="font-size:0.79rem;color:#374151;line-height:1.7;">בשל אלרגיה מדווחת לסטרואידים, יש להימנע מדקסמתזון ופרדניזון. הכירורג יבחן חלופות לניהול הנפיחות (כגון אנזימים פרוטאוליטיים).</p>
+    </div>`;
+  } else {
+    container.innerHTML += buildMedCard({
+      icon:'💉',
+      borderColor:'#8b5cf6',
+      altBadge:'✅ טיפול סטרואידי קצר — 3 ימים במינון יורד',
+      name:'דקסמתזון 4 מ"ג (דקדרון / Decadron) — קו ראשון',
+      type:'סטרואיד — הפחתת דלקת ונפיחות לאחר עקירה כירורגית',
+      doses:[
+        {label:'יום 1',value:'8 מ"ג'},
+        {label:'יום 2',value:'6 מ"ג'},
+        {label:'יום 3',value:'4 מ"ג'},
+        {label:'יחד עם',value:'ארוחת בוקר'}
+      ],
+      reminderKey:'דקסמתזון',
+      warning:'⚠️ יש לקחת בוקר עם ארוחה. אין להפסיק פתאום. דווח על כאב בטן חמור, חום גבוה, או עליית רמות סוכר. הימנע אם יש סוכרת לא מאוזנת.'
+    });
+    container.innerHTML += `<div class="card" style="border:2px dashed #8b5cf6;background:#faf5ff;">
+      <div style="background:#ede9fe;border-radius:8px;padding:7px 12px;margin-bottom:12px;font-size:0.77rem;font-weight:700;color:#5b21b6;">💡 חלופה — פרדניזון (אם דקסמתזון אינו זמין)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;">
+        <div class="dose-box"><div class="label">יום 1</div><div class="value">40 מ"ג</div></div>
+        <div class="dose-box"><div class="label">יום 2</div><div class="value">20 מ"ג</div></div>
+        <div class="dose-box"><div class="label">יום 3</div><div class="value">10 מ"ג</div></div>
+      </div>
+      <div style="font-size:0.79rem;color:#374151;line-height:1.7;"><strong>פרדניזון (Prednisone / Predonine)</strong> — פעם ביום בבוקר עם ארוחה. מינון יורד ל-3 ימים בלבד.</div>
+      <div style="font-size:0.76rem;color:#9a3412;margin-top:8px;background:#fff7ed;padding:8px;border-radius:8px;line-height:1.6;">⚠️ אין להפסיק פתאום. הימנע אם יש סוכרת לא מאוזנת, יתר לחץ דם לא מטופל, או זיהום פעיל. עלול להעלות רמות סוכר זמנית.</div>
+    </div>`;
+  }
+
+  // ── 4. ANTIBIOTIC ─────────────────────────────────────
+  container.innerHTML += `<div style="background:#1e3a8a;color:white;border-radius:10px;padding:10px 14px;margin:14px 0 10px;font-size:0.82rem;font-weight:700;">
+    🦠 ד. אנטיביוטיקה — מניעת זיהום
+  </div>`;
+
+  if (hasPenicillin && hasOther) {
+    container.innerHTML += buildMedCard({
+      icon:'🔵', borderColor:'#f59e0b',
+      altBadge:'🔄 אלרגיה לפניצילין + "אחר" — אזיתרומיצין נבחר',
+      name:'אזיתרומיצין 250 מ"ג (זיטרומקס / סומאמד)',
+      type:'אנטיביוטיקה מקרולידית — ללא פניצילין',
+      doses:[{label:'יום 1',value:'500 מ"ג'},{label:'ימים 2–5',value:'250 מ"ג'},{label:'תדירות',value:'פעם ביום'},{label:'יחד עם',value:'מזון / מים'}],
+      reminderKey:'אזיתרומיצין',
+      warning:'⚠️ השלם קורס מלא 5 ימים. רווח שעתיים מנוגדי חומצה. דווח על דפיקות לב חריגות או שלשולים.'
+    });
+  } else if (hasPenicillin || hasSulfa) {
+    container.innerHTML += buildMedCard({
+      icon:'🟢', borderColor:'#10b981',
+      altBadge:`🔄 אלרגיה ל${hasPenicillin ? 'פניצילין' : 'סולפה'} — קלינדמיצין נבחר`,
+      name:'קלינדמיצין 300 מ"ג (דלצין / קלינדמיצין)',
+      type:'אנטיביוטיקה לינקוסאמידית — ללא פניצילין',
+      doses:[{label:'מינון',value:'300 מ"ג'},{label:'תדירות',value:'כל 8 שעות'},{label:'משך',value:'5–7 ימים'},{label:'יחד עם',value:'כוס מים מלאה'}],
+      reminderKey:'קלינדמיצין',
+      warning:'⚠️ כוס מים מלאה — אין לשכב 30 דקות לאחר הנטילה. השלם קורס מלא. דווח על שלשולים מיד.'
+    });
+    container.innerHTML += `<div class="card" style="border:2px dashed #93c5fd;background:#f0f9ff;">
+      <div style="font-size:0.78rem;font-weight:700;color:#1d4ed8;margin-bottom:8px;">💡 חלופה שנייה — אזיתרומיצין 250 מ"ג (זיטרומקס)</div>
+      <div style="font-size:0.8rem;color:#374151;line-height:1.8;text-align:right;">
+        <strong>יום 1:</strong> 500 מ"ג ← <strong>ימים 2–5:</strong> 250 מ"ג פעם ביום<br>
+        <span style="color:#d97706;font-weight:600;">⚠️ רק אם קלינדמיצין אינו נסבל — התייעץ עם הכירורג.</span>
+      </div>
+    </div>`;
+  } else {
+    container.innerHTML += buildMedCard({
+      icon:'🟢', name:'אמוקסיצילין 500 מ"ג (אמוקסיל / פנמוקס)',
+      type:'אנטיביוטיקה — פניצילין — מניעת זיהום',
+      doses:[{label:'מינון',value:'500 מ"ג'},{label:'תדירות',value:'כל 8 שעות'},{label:'משך',value:'5–7 ימים'},{label:'יחד עם',value:'אוכל'}],
+      reminderKey:'אמוקסיצילין',
+      warning:'⚠️ השלם קורס מלא. דווח על פריחה, אורטיקריה, או תגובה אלרגית מיד והפסק ליטול.'
+    });
+  }
+
+  // ── 5. RINSE ─────────────────────────────────────────
+  container.innerHTML += `<div style="background:#1e3a8a;color:white;border-radius:10px;padding:10px 14px;margin:14px 0 10px;font-size:0.82rem;font-weight:700;">
+    🫧 ה. שטיפת פה
+  </div>`;
+
+  if (hasChlorhex) {
+    chlorCard.style.display = 'none'; salineCard.style.display = 'block';
+  } else {
+    chlorCard.style.display = 'block'; salineCard.style.display = 'none';
+  }
+
+  // ── 6. EXERCISE RESTRICTION ───────────────────────────
+  container.innerHTML += `<div style="background:#1e3a8a;color:white;border-radius:10px;padding:10px 14px;margin:14px 0 10px;font-size:0.82rem;font-weight:700;">
+    🏃 ו. הגבלת פעילות גופנית
+  </div>
+  <div class="card" style="border:2px solid #f97316;background:#fff7ed;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-direction:row-reverse;">
+      <div style="font-size:2rem;">🏋️</div>
+      <div>
+        <div style="font-weight:700;font-size:0.93rem;color:#c2410c;">הגבלת פעילות גופנית — 3 ימים</div>
+        <div style="font-size:0.76rem;color:#9a3412;">חשוב להפחתת דימום, נפיחות וסיבוכים</div>
+      </div>
+    </div>
+    <div style="display:grid;gap:8px;margin-bottom:12px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:white;border-radius:8px;flex-direction:row-reverse;">
+        <span style="font-size:0.82rem;font-weight:600;color:#374151;">ימים 1–3</span>
+        <span style="background:#fee2e2;color:#dc2626;padding:4px 10px;border-radius:20px;font-size:0.75rem;font-weight:700;">❌ אסורה לחלוטין</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:white;border-radius:8px;flex-direction:row-reverse;">
+        <span style="font-size:0.82rem;font-weight:600;color:#374151;">ימים 4–7</span>
+        <span style="background:#fef3c7;color:#d97706;padding:4px 10px;border-radius:20px;font-size:0.75rem;font-weight:700;">⚠️ הליכה קלה בלבד</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:white;border-radius:8px;flex-direction:row-reverse;">
+        <span style="font-size:0.82rem;font-weight:600;color:#374151;">יום 8+</span>
+        <span style="background:#d1fae5;color:#059669;padding:4px 10px;border-radius:20px;font-size:0.75rem;font-weight:700;">✅ חזרה הדרגתית</span>
+      </div>
+    </div>
+    <div style="font-size:0.78rem;color:#9a3412;line-height:1.7;background:white;padding:10px;border-radius:8px;">
+      <strong>מדוע?</strong> פעילות גופנית מעלה לחץ דם ודופק — מגדילה סיכון לדימום חוזר, מאטה ריפוי, ומגבירה נפיחות. ב-3 ימים הראשונים גם הגבל כפיפות קדימה, הרמת משקולות, ועבודה פיזית.
+    </div>
+  </div>`;
+}
+
+function updateAllergyAlert() {
+  const checked = getCheckedAllergies();
+  const alertEl = document.getElementById('allergyAlert');
+  if (!alertEl) return;
+  const nameMap = {
+    penicillin:'פניצילין', nsaids:'NSAIDs/איבופרופן', aspirin:'אספירין',
+    dipyrone:'דיפירון (אופטלגין)', paracetamol:'פרצטמול (אקמול)',
+    codeine:'קודאין', steroids:'סטרואידים', local_anaesthesia:'הרדמה מקומית',
+    chlorhexidine:'כלורהקסידין', sulfa:'סולפה', other:'אחר', latex:'לטקס'
+  };
+  if (checked.length === 0) {
+    alertEl.className = 'alert-box alert-green show';
+    alertEl.textContent = '✅ לא דווחו אלרגיות. ניתן לרשום תרופות סטנדרטיות בבטחה.';
+  } else {
+    const names = checked.map(v => nameMap[v] || v).join(', ');
+    alertEl.className = 'alert-box alert-red show';
+    alertEl.innerHTML = `🚨 אלרגיה זוהתה: <strong>${names}</strong>.<br>תרופות חלופיות בטוחות נבחרו עבורך אוטומטית בלשונית "תרופות".`;
+  }
+}
+
+// Sinus test toggle — mutual exclusion
+function toggleSinus(label, val) {
+  const opposite = val === 'sinus_positive' ? 'sinus_negative' : 'sinus_positive';
+  const oppositeLabel = document.getElementById(opposite === 'sinus_negative' ? 'sinus_neg_label' : 'sinus_pos_label');
+  if (oppositeLabel) {
+    oppositeLabel.querySelector('input').checked = false;
+    oppositeLabel.classList.remove('checked');
+  }
+  const cb = label.querySelector('input');
+  cb.checked = !cb.checked;
+  label.classList.toggle('checked', cb.checked);
+  const alertEl = document.getElementById('sinusAlert');
+  if (!alertEl) return;
+  if (val === 'sinus_positive' && cb.checked) {
+    alertEl.className = 'alert-box alert-red show';
+    alertEl.innerHTML = '🚨 <strong>בדיקה חיובית — OAC אפשרי!</strong><br>יש לפנות לכירורג מיד לסגירה ראשונית. הימנע ממניפולציות בפה ואל תנשוף דרך האף. תועד בתיק המטופל.';
+  } else if (val === 'sinus_negative' && cb.checked) {
+    alertEl.className = 'alert-box alert-green show';
+    alertEl.textContent = '✅ בדיקת OAC שלילית — אין מעבר פה-אף. תועד בתיק המטופל.';
+  } else {
+    alertEl.className = 'alert-box';
+    alertEl.textContent = '';
+  }
+}
+
+// Show/hide jaw-specific cards when teeth checkboxes are clicked
+function updateJawCards() {
+  const lowerChecked = document.querySelector('input[value="lower_right"]')?.closest('.allergy-item')?.classList.contains('checked') ||
+                       document.querySelector('input[value="lower_left"]')?.closest('.allergy-item')?.classList.contains('checked');
+  const upperChecked = document.querySelector('input[value="upper_right"]')?.closest('.allergy-item')?.classList.contains('checked') ||
+                       document.querySelector('input[value="upper_left"]')?.closest('.allergy-item')?.classList.contains('checked');
+  const lowerCard = document.getElementById('lowerJawCard');
+  const upperCard = document.getElementById('upperJawCard');
+  if (lowerCard) lowerCard.style.display = lowerChecked ? 'block' : 'none';
+  if (upperCard) upperCard.style.display = upperChecked ? 'block' : 'none';
+
+  // Update neuro alert if any neuro symptom checked
+  const neuroChecked = ['neuro_lip','neuro_chin','neuro_tongue'].filter(v =>
+    document.querySelector(`input[value="${v}"]`)?.closest('.allergy-item')?.classList.contains('checked')
+  );
+  const neuroAlert = document.getElementById('neuroAlert');
+  if (neuroAlert) {
+    if (neuroChecked.length > 0) {
+      const labels = {neuro_lip:'שפה',neuro_chin:'סנטר',neuro_tongue:'לשון'};
+      const areas = neuroChecked.map(v => labels[v]).join(', ');
+      neuroAlert.className = 'alert-box alert-warn show';
+      neuroAlert.innerHTML = `⚠️ חוסר תחושה תועד ב: <strong>${areas}</strong>.<br>תועד בתיק המטופל. אם אינו חולף תוך 48–72 שעות — פנה לכירורג למעקב עצבי.`;
+    } else {
+      neuroAlert.className = 'alert-box alert-green show';
+      neuroAlert.textContent = '✅ תחושה תקינה בכל אזורי הבדיקה. תועד בתיק.';
+    }
+  }
+}
+
+// Patch toggleAllergy to also trigger jaw card updates
+function toggleAllergy(label) {
+  const cb = label.querySelector('input');
+  cb.checked = !cb.checked;
+  label.classList.toggle('checked', cb.checked);
+  updateAllergyAlert();
+  updateJawCards();
+}
+
+function confirmIntake() {
+  const date = document.getElementById('surgeryDate').value;
+  if (!date) { alert('נא להזין את תאריך הניתוח לפני המשך.'); return; }
+  const allergies = getCheckedAllergies();
+
+  // Validate sinus test if upper jaw extracted
+  const upperChecked = document.querySelector('input[value="upper_right"]')?.closest('.allergy-item')?.classList.contains('checked') ||
+                       document.querySelector('input[value="upper_left"]')?.closest('.allergy-item')?.classList.contains('checked');
+  const sinusPositive = document.querySelector('input[value="sinus_positive"]')?.checked;
+  const sinusNegative = document.querySelector('input[value="sinus_negative"]')?.checked;
+  if (upperChecked && !sinusPositive && !sinusNegative) {
+    if (!confirm('⚠️ לא בוצעה בדיקת תקשורת פה-אף (OAC) עבור עקירת לסת עליונה. האם להמשיך ללא בדיקה?')) return;
+  }
+
+  try {
+    localStorage.setItem('intakeDone','1');
+    localStorage.setItem('surgeryDate', date);
+    localStorage.setItem('allergies', JSON.stringify(allergies));
+    localStorage.setItem('sinusPositive', sinusPositive ? '1' : '0');
+    const email = document.getElementById('doctorEmail')?.value?.trim();
+    if (email) localStorage.setItem('doctorEmail', email);
+  } catch(e){}
+  renderMedications(allergies);
+  const msg = sinusPositive
+    ? '✅ הטופס נשמר!\n\n🚨 שים לב: בדיקת OAC חיובית — פנה לכירורג לסגירת הפתח לפני שחרור.'
+    : '✅ הטופס נשמר! תכנית התרופות המותאמת אישית שלך מוכנה בלשונית "תרופות".';
+  alert(msg);
+}
+
+// ── VAS ───────────────────────────────────────────────────
+const vasLevels = [
+  { max:0, emoji:'😊', color:'#10b981', desc:'ללא כאב', note:'✅ מצוין! לא דווח על כאב.' },
+  { max:2, emoji:'🙂', color:'#34d399', desc:'כאב קל', note:'✅ אי-נוחות קלה — ניהול עם תרופה.' },
+  { max:4, emoji:'😐', color:'#f59e0b', desc:'כאב בינוני', note:'⚠️ קח את התרופה שנרשמה ונוח.' },
+  { max:6, emoji:'😟', color:'#f97316', desc:'כאב משמעותי', note:'⚠️ וודא שנלקחו כל המינונים. פנה לכירורג אם אין שיפור תוך 24 שעות.' },
+  { max:8, emoji:'😣', color:'#ef4444', desc:'כאב חמור', note:'🚨 פנה לכירורג היום — עלול להצביע על שקע יבש או זיהום.' },
+  { max:10, emoji:'😭', color:'#dc2626', desc:'כאב בלתי נסבל', note:'🚨 פנה לטיפול חירום דנטלי מיד.' },
+];
+
+function getVasLevel(v) { return vasLevels.find(l => v <= l.max) || vasLevels[vasLevels.length-1]; }
+
+function updateVas(val) {
+  val = parseInt(val);
+  document.getElementById('vasSlider').value = val;
+  const l = getVasLevel(val);
+  document.getElementById('vasNumber').textContent = val;
+  document.getElementById('vasNumber').style.color = l.color;
+  document.getElementById('vasDesc').textContent = l.desc;
+  document.getElementById('vasDesc').style.color = l.color;
+  document.getElementById('vasEmoji').textContent = l.emoji;
+  document.querySelectorAll('.vas-face').forEach(f => f.classList.toggle('active', parseInt(f.dataset.val) === val));
+  const a = document.getElementById('vasAlert');
+  const cls = val >= 8 ? 'alert-box alert-red show' : val >= 4 ? 'alert-box alert-warn show' : 'alert-box alert-green show';
+  a.className = cls; a.textContent = l.note;
+}
+
+function setVasFace(val) { document.getElementById('vasSlider').value = val; updateVas(val); }
+
+function saveVasScore() {
+  const val = parseInt(document.getElementById('vasSlider').value);
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem('vasHistory') || '[]'); } catch(e){}
+  const today = new Date().toLocaleDateString('he-IL',{day:'2-digit',month:'short',year:'numeric'});
+  history.unshift({ date: today, score: val, desc: getVasLevel(val).desc, color: getVasLevel(val).color });
+  if (history.length > 14) history.pop();
+  try { localStorage.setItem('vasHistory', JSON.stringify(history)); } catch(e){}
+  renderVasHistory();
+  const btn = document.getElementById('vasSaveBtn');
+  btn.textContent = '✅ נשמר!'; btn.style.background = '#10b981';
+  setTimeout(() => { btn.textContent = '💾 שמור דירוג היום'; btn.style.background = ''; }, 2200);
+}
+
+function renderVasHistory() {
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem('vasHistory') || '[]'); } catch(e){}
+  const card = document.getElementById('vasHistoryCard');
+  const cont = document.getElementById('vasHistory');
+  if (!history.length) { card.style.display='none'; return; }
+  card.style.display = 'block';
+  cont.innerHTML = history.map(h => `
+    <div class="history-row">
+      <div class="h-val" style="color:${h.color}">${getVasLevel(h.score).emoji} ${h.score}/10</div>
+      <div><div class="h-date">${h.date}</div><div class="h-desc" style="color:${h.color}">${h.desc}</div></div>
+    </div>`).join('');
+}
+
+// ── QUESTIONNAIRE ─────────────────────────────────────────
+const seQ = [
+  { text: 'כיצד הדימום שלך כיום?', opts: [
+    { icon:'✅', text:'אין — הפסיק לגמרי', level:'ok', advice:'ריפוי תקין. הדימום בדרך כלל עוצר תוך 24 שעות.' },
+    { icon:'🟡', text:'דימום קל / טפטוף קל', level:'ok', advice:'טפטוף קל של דם הוא תקין בשעות הראשונות. לחץ בעדינות על גזה למשך 20 דקות.' },
+    { icon:'🟠', text:'בינוני — נזקק לגזה לעתים קרובות', level:'warn', advice:'הגבר לחץ ומשך הנשיכה על גזה. הימנע משטיפה, מזון חם, וקשיות. פנה לכירורג אם נמשך מעבר ל-48 שעות.' },
+    { icon:'🔴', text:'כבד ולא עוצר', level:'danger', advice:'⚠️ פנה לטיפול דנטלי או חירום מיד. אל תסיר גזה, הפעל לחץ יציב.' },
+  ]},
+  { text: 'כיצד תתאר את הנפיחות שלך?', opts: [
+    { icon:'😊', text:'אין נפיחות', level:'ok', advice:'תקין — ייתכן שמוקדם מדי לנפיחות.' },
+    { icon:'🟡', text:'קלה — בקושי ניכרת', level:'ok', advice:'צפוי. המשך בקרח כל 20 דקות ב-48 שעות הראשונות.' },
+    { icon:'🟠', text:'בינונית — ניכרת אך יציבה', level:'warn', advice:'תקין ב-3 הימים הראשונים. הנפיחות צפויה לגדול עד יום 3 ואז לרדת. המשך קרח (48 שעות ראשונות) או חמים לאחר מכן.' },
+    { icon:'🔴', text:'חמורה, גוברת לאחר יום 3, או מתפשטת לצוואר', level:'danger', advice:'🚨 פנה לכירורג מיד. נפיחות שממשיכה לגדול לאחר יום 3 עשויה להצביע על זיהום חמור.' },
+  ]},
+  { text: 'האם יש לך חום?', opts: [
+    { icon:'✅', text:'לא — טמפרטורה תקינה', level:'ok', advice:'אין חום — סימן טוב.' },
+    { icon:'🟡', text:'קל — מתחת ל-38°C', level:'ok', advice:'חום קל ב-1–2 הימים הראשונים תקין. שתה הרבה ומנוח.' },
+    { icon:'🟠', text:'בינוני — 38°C עד 38.5°C', level:'warn', advice:'קח פרצטמול לפי המרשם. פנה לכירורג אם נמשך מעבר ל-2 ימים.' },
+    { icon:'🔴', text:'גבוה — מעל 38.5°C', level:'danger', advice:'⚠️ פנה לכירורג או רופא היום. חום גבוה עשוי להצביע על זיהום.' },
+  ]},
+  { text: 'כיצד הכאב באזור העקירה?', opts: [
+    { icon:'😊', text:'ללא כאב או מינימלי', level:'ok', advice:'סימן מצוין לריפוי.' },
+    { icon:'🟡', text:'קל — נשלט עם תרופה', level:'ok', advice:'המשך ליטול תרופות לפי המרשם.' },
+    { icon:'🟠', text:'בינוני למרות תרופות', level:'warn', advice:'וודא שאתה לוקח תרופות לפי הלוח הזמנים. פנה לכירורג אם הכאב אינו נשלט.' },
+    { icon:'🔴', text:'חמור ומחמיר (יום 3+)', level:'danger', advice:'⚠️ כאב שמחמיר לאחר יום 2–3 עלול להצביע על שקע יבש או זיהום. פנה לכירורג היום.' },
+  ]},
+  { text: 'האם אתה מרגיש ריח או טעם חריג מהשקע?', opts: [
+    { icon:'✅', text:'לא', level:'ok', advice:'אין סימנים לזיהום.' },
+    { icon:'🟡', text:'טעם מתכתי קל', level:'ok', advice:'עשוי להיות שאריות דם — תקין ב-24 שעות הראשונות.' },
+    { icon:'🟠', text:'טעם רע קל / ריח קל', level:'warn', advice:'שטוף בעדינות במי מלח או כלורהקסידין. שמור על היגיינת פה עדינה.' },
+    { icon:'🔴', text:'ריח חזק / טעם רע משמעותי', level:'danger', advice:'⚠️ עלול להצביע על שקע יבש או זיהום. פנה לכירורג בהקדם.' },
+  ]},
+  { text: 'האם אתה מסוגל לפתוח את הפה כרגיל?', opts: [
+    { icon:'✅', text:'כן — פתיחה תקינה', level:'ok', advice:'תפקוד לסת תקין.' },
+    { icon:'🟡', text:'הגבלה קלה אך ניהולית', level:'ok', advice:'נפוץ בשבוע הראשון עקב נפיחות ונוקשות שרירים. משתפר עם הזמן.' },
+    { icon:'🟠', text:'הגבלה משמעותית', level:'warn', advice:'חבישות חמות. תרגילי לסת עדינים לאחר יום 5. דון עם הכירורג בביקור המעקב.' },
+    { icon:'🔴', text:'בקושי פותח — ומחמיר', level:'danger', advice:'⚠️ נעילת לסת מחמירה מעבר ל-2 שבועות מצריכה הערכה דנטלית דחופה.' },
+  ]},
+  { text: 'האם נטלת את כל התרופות שנרשמו לך?', opts: [
+    { icon:'✅', text:'כן — כל המינונים לפי הלוח', level:'ok', advice:'מצוין! עמידה בטיפול מפחיתה משמעותית את הסיכון לסיבוכים.' },
+    { icon:'🟡', text:'ברובם — פספסתי 1–2 מינונים', level:'warn', advice:'חזור לשגרה. הגדר תזכורות בטלפון. פספוס מינוני אנטיביוטיקה מסכן.' },
+    { icon:'🟠', text:'חלקית — לוקח רק כשכואב', level:'warn', advice:'משככי כאבים פועלים טוב יותר כשנלקחים באופן קבוע. אנטיביוטיקה חייבת להילקח לפי הלוח הזמנים.' },
+    { icon:'🔴', text:'לא — הפסקתי או לא התחלתי', level:'danger', advice:'⚠️ אנא חזור ליטול תרופות מיד. עצירת אנטיביוטיקה מוקדם מסכנת לזיהום חמור.' },
+  ]},
+  { text: 'האם עקבת אחר הוראות התזונה (רך וקר ב-48 שעות הראשונות)?', opts: [
+    { icon:'✅', text:'כן — שומר על ההנחיות בקפדנות', level:'ok', advice:'כל הכבוד! עמידה בתזונה מפחיתה משמעותית סיבוכים.' },
+    { icon:'🟡', text:'ברובם — חריגות קטנות', level:'ok', advice:'מאמץ טוב. המשך להימנע מקשיות, מזון חם ומרקמים קשים.' },
+    { icon:'🟠', text:'חלקית — אכלתי חלק מהמזונות האסורים', level:'warn', advice:'הימנע ממזון קשה, פריך, חם ולעיס. אלה עלולים להפריע לקריש.' },
+    { icon:'🔴', text:'לא — השתמשתי בקשית / אכלתי מזון קשה', level:'danger', advice:'⚠️ שימוש בקשית ואכילת מזון קשה עלולים לנתק את קריש הדם ולגרום לשקע יבש. עקוב אחרי האזור ופנה לכירורג אם הכאב גדל.' },
+  ]},
+];
+
+let seAnswers = new Array(seQ.length).fill(null);
+let seIdx = 0;
+
+function initSE() {
+  seAnswers = new Array(seQ.length).fill(null);
+  seIdx = 0;
+  document.getElementById('seQuestions').style.display = 'block';
+  document.getElementById('seResults').style.display = 'none';
+  renderSEQ();
+}
+
+function renderSEQ() {
+  const q = seQ[seIdx];
+  document.getElementById('qNum').textContent = `שאלה ${seIdx+1} מתוך ${seQ.length}`;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('qDots').innerHTML = seQ.map((_,i) =>
+    `<div class="q-dot ${i < seIdx ? 'done' : i === seIdx ? 'current' : ''}"></div>`).join('');
+  document.getElementById('qOptions').innerHTML = q.opts.map((o,i) => {
+    const selClass = seAnswers[seIdx] === i ? ` sel-${o.level}` : '';
+    return `<div class="q-opt${selClass}" onclick="pickOpt(${i},'${o.level}')">
+      <span class="q-opt-icon">${o.icon}</span><span>${o.text}</span></div>`;
+  }).join('');
+  const btnNext = document.getElementById('btnNext');
+  btnNext.disabled = seAnswers[seIdx] === null;
+  btnNext.textContent = seIdx === seQ.length - 1 ? 'ראה תוצאות ✓' : 'הבא ←';
+  document.querySelector('.btn-back').disabled = seIdx === 0;
+}
+
+function pickOpt(idx, level) {
+  seAnswers[seIdx] = idx;
+  document.querySelectorAll('.q-opt').forEach((el,i) => {
+    el.className = 'q-opt' + (i === idx ? ` sel-${level}` : '');
+  });
+  document.getElementById('btnNext').disabled = false;
+}
+
+function seNext() {
+  if (seIdx < seQ.length - 1) { seIdx++; renderSEQ(); }
+  else showSEResults();
+}
+
+function seBack() { if (seIdx > 0) { seIdx--; renderSEQ(); } }
+
+function checkEmailThresholds() {
+  var triggers = [];
+  try {
+    var vasHistory = JSON.parse(localStorage.getItem('vasHistory') || '[]');
+    var highPain = vasHistory.filter(function(h){ return h.score >= 8; });
+    if (highPain.length >= 2) triggers.push({ label:'כאב חמור (VAS \u2265 8)', detail:'\u05d3\u05d5\u05e8\u05d2\u05d5 ' + highPain.length + ' \u05d9\u05de\u05d9\u05dd \u05e2\u05dd VAS \u2265 8' });
+  } catch(e) {}
+  if (seAnswers[2] !== null) {
+    var feverOpt = seQ[2].opts[seAnswers[2]];
+    if (feverOpt.level === 'danger') triggers.push({ label:'\u05d7\u05d5\u05dd \u05de\u05e2\u05dc 38.5\u00b0C', detail: feverOpt.text });
+  }
+  try {
+    if (localStorage.getItem('sinusPositive') === '1') triggers.push({ label:'OAC \u05d7\u05d9\u05d5\u05d1\u05d9 \u2014 \u05de\u05e2\u05d1\u05e8 \u05e4\u05d4-\u05d0\u05e3', detail:'\u05ea\u05d5\u05e2\u05d3 \u05d1\u05d8\u05d5\u05e4\u05e1 \u05d4\u05e7\u05d1\u05dc\u05d4' });
+  } catch(e) {}
+  try {
+    var surgDate = localStorage.getItem('surgeryDate');
+    if (surgDate) {
+      var daysSince = Math.floor((new Date() - new Date(surgDate)) / 86400000);
+      var neuroMap = {neuro_lip:'\u05e9\u05e4\u05d4', neuro_chin:'\u05e1\u05e0\u05d8\u05e8', neuro_tongue:'\u05dc\u05e9\u05d5\u05df'};
+      var neuroChecked = ['neuro_lip','neuro_chin','neuro_tongue'].filter(function(v){
+        var el = document.querySelector('input[value="'+v+'"]');
+        return el && el.closest('.allergy-item') && el.closest('.allergy-item').classList.contains('checked');
+      });
+      if (neuroChecked.length > 0 && daysSince >= 3) triggers.push({ label:'\u05d7\u05d5\u05e1\u05e8 \u05ea\u05d7\u05d5\u05e9\u05d4 \u05e2\u05e6\u05d1\u05d9 \u05dc\u05d0 \u05d7\u05d5\u05dc\u05e3', detail:'\u05d9\u05d5\u05dd ' + daysSince + ' \u05dc\u05e0\u05d9\u05ea\u05d5\u05d7 \u2014 ' + neuroChecked.map(function(v){ return neuroMap[v]; }).join(', ') });
+    }
+  } catch(e) {}
+  seAnswers.forEach(function(ans, qi) {
+    if (ans === null) return;
+    var opt = seQ[qi].opts[ans];
+    if (opt.level === 'danger') {
+      var isFever = (qi === 2 && triggers.some(function(t){ return t.label.indexOf('\u05d7\u05d5\u05dd') >= 0; }));
+      if (!isFever) triggers.push({ label: seQ[qi].text.substring(0,40) + '\u2026', detail: opt.text });
+    }
+  });
+  return triggers;
+}
+
+function showSEResults() {
+  document.getElementById('seQuestions').style.display = 'none';
+  document.getElementById('seResults').style.display = 'block';
+  var levels = seAnswers.map(function(ans, qi){ return ans !== null ? seQ[qi].opts[ans].level : 'ok'; });
+  var hasDanger = levels.includes('danger'), hasWarn = levels.includes('warn');
+  document.getElementById('rIcon').textContent = hasDanger ? '\ud83d\udea8' : hasWarn ? '\u26a0\ufe0f' : '\u2705';
+  document.getElementById('rTitle').textContent = hasDanger ? '\u05e0\u05d3\u05e8\u05e9 \u05d8\u05d9\u05e4\u05d5\u05dc \u05d3\u05d7\u05d5\u05e3' : hasWarn ? '\u05e0\u05de\u05e6\u05d0\u05d5 \u05db\u05de\u05d4 \u05d7\u05e9\u05e9\u05d5\u05ea' : '\u05d4\u05d4\u05d7\u05dc\u05de\u05d4 \u05d1\u05de\u05e1\u05dc\u05d5\u05dc \u05ea\u05e7\u05d9\u05df!';
+  document.getElementById('rSub').textContent = hasDanger ? '\u05ea\u05d2\u05d5\u05d1\u05d4 \u05d0\u05d7\u05ea \u05d0\u05d5 \u05d9\u05d5\u05ea\u05e8 \u05de\u05d7\u05d9\u05d9\u05d1\u05ea \u05e4\u05e0\u05d9\u05d9\u05d4 \u05d3\u05e0\u05d8\u05dc\u05d9\u05ea \u05de\u05d9\u05d9\u05d3\u05d9\u05ea.' : hasWarn ? '\u05db\u05de\u05d4 \u05ea\u05d7\u05d5\u05de\u05d9\u05dd \u05de\u05e6\u05e8\u05d9\u05db\u05d9\u05dd \u05de\u05e2\u05e7\u05d1. \u05e2\u05d9\u05d9\u05df \u05d1\u05d4\u05de\u05dc\u05e6\u05d5\u05ea \u05dc\u05d4\u05dc\u05df.' : '\u05db\u05dc \u05d4\u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05e8\u05d0\u05d5\u05ea \u05ea\u05e7\u05d9\u05e0\u05d5\u05ea. \u05d4\u05de\u05e9\u05da \u05dc\u05e2\u05e7\u05d5\u05d1 \u05d0\u05d7\u05e8\u05d9 \u05ea\u05db\u05e0\u05d9\u05ea \u05d4\u05d4\u05d7\u05dc\u05de\u05d4!';
+  document.getElementById('rCards').innerHTML = seAnswers.map(function(ans, qi) {
+    if (ans === null) return '';
+    var opt = seQ[qi].opts[ans];
+    return '<div class="result-card r-'+opt.level+'"><h4>'+opt.icon+' '+seQ[qi].text+'</h4><p><strong>\u05ea\u05e9\u05d5\u05d1\u05ea\u05da:</strong> '+opt.text+'</p><p style="margin-top:5px;">'+opt.advice+'</p></div>';
+  }).join('');
+
+  var triggers = checkEmailThresholds();
+  if (triggers.length > 0) {
+    var doctorEmail = (document.getElementById('doctorEmail') && document.getElementById('doctorEmail').value.trim()) ||
+      (function(){ try { return localStorage.getItem('doctorEmail') || ''; } catch(e){ return ''; } })();
+    var patientDate = (function(){ try { return localStorage.getItem('surgeryDate') || 'לא ידוע'; } catch(e){ return 'לא ידוע'; } })();
+    var patientName = (function(){ try { return ((localStorage.getItem('patientFirstName')||'') + ' ' + (localStorage.getItem('patientLastName')||'')) || 'לא הוזן'; } catch(e){ return ''; } })();
+    var patientId   = (function(){ try { return localStorage.getItem('patientId')   || ''; } catch(e){ return ''; } })();
+    var patientPhone= (function(){ try { return localStorage.getItem('patientPhone')|| ''; } catch(e){ return ''; } })();
+    var doctorNameV = (function(){ try { return localStorage.getItem('doctorName')  || 'לא הוזן'; } catch(e){ return ''; } })();
+    var clinicNameV = (function(){ try { return localStorage.getItem('clinicName')  || ''; } catch(e){ return ''; } })();
+    var doctorTelV  = (function(){ try { return localStorage.getItem('doctorTel')   || ''; } catch(e){ return ''; } })();
+    var triggerList = triggers.map(function(t){ return '\u2022 '+t.label+': '+t.detail; }).join('%0A');
+    var subject = encodeURIComponent('\ud83d\udea8 \u05d4\u05ea\u05e8\u05d0\u05d4: \u05e1\u05e3 \u05e7\u05dc\u05d9\u05e0\u05d9 \u05d7\u05e6\u05d5\u05d9 \u2014 \u05de\u05d8\u05d5\u05e4\u05dc \u05dc\u05d0\u05d7\u05e8 \u05e2\u05e7\u05d9\u05e8\u05ea \u05e9\u05d9\u05e0\u05d9\u05d9\u05dd');
+    var bodyText = 'שלום ' + doctorNameV + ',\n\nמערכת מעקב ההחלמה מזהה שסף קליני חצוי.\n\n' +
+      '═══ פרטי מטופל ═══\n' +
+      'שם: ' + patientName + '  |  ת.ז.: ' + patientId + '  |  טלפון: ' + patientPhone + '\n' +
+      'תאריך ניתוח: ' + patientDate + '  |  זמן דיווח: ' + now + '\n\n' +
+      '═══ סף/ים שחצויים ═══\n' + triggerList + '\n\n' +
+      '═══ סף שליחה ═══\n' +
+      '• כאב VAS ≥ 8 ב-2 ימים רצופים\n• חום מעל 38.5°C\n• OAC חיובי\n• חוסר תחושה עצבי לא חולף ≥ 3 ימים\n\n' +
+      'יש לפנות למטופל בהקדם.\n---\nנשלח אוטומטית ממערכת מדריך ההחלמה.';
+    var body = encodeURIComponent(bodyText);
+    var badges = triggers.map(function(t){ return '<span style="background:rgba(255,255,255,0.2);padding:3px 8px;border-radius:12px;font-size:0.73rem;margin:2px;display:inline-block;">'+t.label+'</span>'; }).join('');
+    var emailAlertHtml;
+    if (doctorEmail) {
+      emailAlertHtml = '<div style="background:linear-gradient(135deg,#dc2626,#b91c1c);color:white;border-radius:14px;padding:16px;margin-bottom:14px;"><div style="font-size:1rem;font-weight:700;margin-bottom:6px;">\ud83d\udce7 \u05d4\u05ea\u05e8\u05d0\u05d4 \u05dc\u05e8\u05d5\u05e4\u05d0 \u2014 \u05e1\u05e3 \u05e7\u05dc\u05d9\u05e0\u05d9 \u05d7\u05e6\u05d5\u05d9</div><div style="margin-bottom:8px;line-height:2;">'+badges+'</div><div style="font-size:0.8rem;opacity:0.95;margin-bottom:12px;line-height:1.6;">\u05e8\u05d5\u05e4\u05d0 \u05de\u05d8\u05e4\u05dc: <strong>'+doctorEmail+'</strong></div><a href="mailto:'+doctorEmail+'?subject='+subject+'&body='+body+'" style="display:inline-block;background:white;color:#dc2626;font-weight:700;padding:10px 22px;border-radius:50px;text-decoration:none;font-size:0.88rem;">\ud83d\udce7 \u05e9\u05dc\u05d7 \u05d4\u05ea\u05e8\u05d0\u05d4 \u05dc\u05e8\u05d5\u05e4\u05d0 \u05e2\u05db\u05e9\u05d9\u05d5</a></div>';
+    } else {
+      var detailItems = triggers.map(function(t){ return '<strong>\u2022 '+t.label+'</strong> \u2014 '+t.detail; }).join('<br>');
+      emailAlertHtml = '<div style="background:#fff7ed;border:2px solid #f97316;border-radius:14px;padding:14px;margin-bottom:14px;"><div style="font-size:0.88rem;font-weight:700;color:#c2410c;margin-bottom:8px;">\u26a0\ufe0f \u05e1\u05e3 \u05e7\u05dc\u05d9\u05e0\u05d9 \u05d7\u05e6\u05d5\u05d9 \u2014 \u05e0\u05d3\u05e8\u05e9\u05ea \u05e4\u05e0\u05d9\u05d9\u05d4 \u05dc\u05e8\u05d5\u05e4\u05d0!</div><div style="font-size:0.8rem;color:#374151;line-height:1.7;margin-bottom:10px;">'+detailItems+'</div><div style="background:#fef2f2;border-radius:8px;padding:10px;"><div style="font-size:0.79rem;color:#991b1b;">\u05d0\u05d9\u05de\u05d9\u05d9\u05dc \u05d4\u05e8\u05d5\u05e4\u05d0 \u05dc\u05d0 \u05d4\u05d5\u05d6\u05df. \u05dc\u05d0\u05e4\u05e9\u05e8 \u05e9\u05dc\u05d9\u05d7\u05d4 \u05e2\u05ea\u05d9\u05d3\u05d9\u05ea \u2014 \u05d4\u05e8\u05d5\u05e4\u05d0 \u05d9\u05db\u05e0\u05d9\u05e1 \u05db\u05ea\u05d5\u05d1\u05ea \u05de\u05d9\u05d9\u05dc \u05d1\u05d8\u05d5\u05e4\u05e1 \u05d4\u05e7\u05d1\u05dc\u05d4.</div><div style="margin-top:8px;font-size:0.85rem;font-weight:700;color:#dc2626;">\ud83d\udcde \u05e4\u05e0\u05d4 \u05dc\u05e8\u05d5\u05e4\u05d0 \u05d4\u05de\u05d8\u05e4\u05dc \u05d9\u05d3\u05e0\u05d9\u05ea \u05e2\u05db\u05e9\u05d9\u05d5!</div></div></div>';
+    }
+    document.getElementById('rCards').insertAdjacentHTML('afterbegin', emailAlertHtml);
+  }
+}
+
+function resetSE() { initSE(); }
+
+// ══════════════════════════════════════════════════════════
+// PRE-OP TAB LOGIC
+// ══════════════════════════════════════════════════════════
+
+function toggleBloodThinner(show) {
+  document.getElementById('bloodThinnerDetails').style.display = show ? 'block' : 'none';
+  savePrOp();
+}
+
+function updateINR() {
+  const val = parseFloat(document.getElementById('inrValue').value);
+  const alertEl = document.getElementById('inrAlert');
+  if (!val || isNaN(val)) { alertEl.style.display='none'; return; }
+  alertEl.style.display = 'block';
+  if (val <= 2.0) {
+    alertEl.innerHTML = '<div style="background:#d1fae5;border-radius:8px;padding:8px;font-size:0.8rem;color:#065f46;font-weight:600;">✅ INR תקין (≤2.0) — ניתן לבצע עקירה בדרך כלל ללא הפסקה</div>';
+  } else if (val <= 3.5) {
+    alertEl.innerHTML = '<div style="background:#fef3c7;border-radius:8px;padding:8px;font-size:0.8rem;color:#92400e;font-weight:600;">⚠️ INR גבולי (2.0–3.5) — שקול ייעוץ קרדיולוג לפני הפסקה</div>';
+  } else {
+    alertEl.innerHTML = '<div style="background:#fee2e2;border-radius:8px;padding:8px;font-size:0.8rem;color:#991b1b;font-weight:600;">🚨 INR גבוה (>3.5) — נדרש ייעוץ קרדיולוג/המטולוג לפני הניתוח. אין לבצע עקירה ללא אישור!</div>';
+  }
+  savePrOp();
+}
+
+function updateProphylaxis() {
+  const val = document.querySelector('input[name="prophylaxis"]:checked')?.value;
+  const det = document.getElementById('prophylaxisDetails');
+  const opts = document.getElementById('prophylaxisDrugOptions');
+  if (!val || val === 'none') { det.style.display='none'; savePrOp(); return; }
+  det.style.display = 'block';
+
+  const allergies = JSON.parse(localStorage.getItem('allergies')||'[]');
+  const hasPen = allergies.includes('penicillin');
+
+  if (val === 'full') {
+    opts.innerHTML = hasPen
+      ? `<div style="background:#fff7ed;border:1px solid #f97316;border-radius:8px;padding:8px;font-size:0.81rem;">
+          <strong>⚠️ אלרגיה לפניצילין — חלופה:</strong><br>
+          קלינדמיצין 600 מ"ג פו"ס שעה לפני, או אזיתרומיצין 500 מ"ג
+         </div>`
+      : `<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:8px;font-size:0.81rem;">
+          <strong>✅ אמוקסיצילין 2 גרם</strong> — פו"ס שעה לפני הניתוח<br>
+          <span style="color:#6b7280;">חלופה: אמפיצילין 2 גרם IV/IM 30 דקות לפני</span>
+         </div>`;
+    document.getElementById('prophylaxisDose').value = hasPen ? '600 מ"ג' : '2 גרם';
+    document.getElementById('prophylaxisTiming').value = 'שעה לפני הניתוח';
+  } else {
+    opts.innerHTML = hasPen
+      ? `<div style="background:#fff7ed;border:1px solid #f97316;border-radius:8px;padding:8px;font-size:0.81rem;">
+          <strong>⚠️ אלרגיה לפניצילין — חלופה:</strong> קלינדמיצין 300 מ"ג × 3/יום × 5–7 ימים
+         </div>`
+      : `<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:8px;font-size:0.81rem;">
+          <strong>✅ אמוקסיצילין 500 מ"ג</strong> × 3/יום × 5–7 ימים לאחר הניתוח
+         </div>`;
+    document.getElementById('prophylaxisDose').value = hasPen ? '300 מ"ג' : '500 מ"ג';
+    document.getElementById('prophylaxisTiming').value = hasPen ? 'כל 8 שעות × 7 ימים' : 'כל 8 שעות × 5–7 ימים';
+  }
+  savePrOp();
+}
+
+function renderPreMeds() {
+  const allergies = JSON.parse(localStorage.getItem('allergies')||'[]');
+  const hasPen  = allergies.includes('penicillin');
+  const hasNsaid= allergies.includes('nsaids');
+  const hasPara = allergies.includes('paracetamol');
+  const hasDip  = allergies.includes('dipyrone');
+  const hasSter = allergies.includes('steroids');
+
+  // Antibiotics
+  const abEl = document.getElementById('preMedAntibiotics');
+  if (abEl) abEl.innerHTML = hasPen
+    ? `<div style="background:#fff7ed;border:1px solid #f97316;border-radius:8px;padding:9px;font-size:0.81rem;">⚠️ <strong>אלרגיה לפניצילין:</strong> קלינדמיצין 300–600 מ"ג שעה לפני</div>`
+    : `<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:9px;font-size:0.81rem;">💊 <strong>אמוקסיצילין 2 גרם</strong> — פו"ס שעה לפני (אם נדרש פרופילקסיס)</div>`;
+
+  // Analgesics
+  const anEl = document.getElementById('preMedAnalgesics');
+  if (anEl) {
+    let lines = [];
+    if (!hasNsaid)  lines.push('<div style="background:#f8faff;border:1px solid #bfdbfe;border-radius:8px;padding:9px;font-size:0.81rem;">💊 <strong>איבופרופן 400 מ"ג</strong> — שעה לפני הניתוח (Pre-emptive)</div>');
+    if (!hasPara)   lines.push('<div style="background:#f8faff;border:1px solid #bfdbfe;border-radius:8px;padding:9px;font-size:0.81rem;">💊 <strong>פרצטמול 1 גרם</strong> — שעה לפני (אם NSAIDs אסורים)</div>');
+    if (!hasDip)    lines.push('<div style="background:#f8faff;border:1px solid #bfdbfe;border-radius:8px;padding:9px;font-size:0.81rem;">💊 <strong>דיפירון 1 גרם</strong> — חלופה למשכך כאבים</div>');
+    anEl.innerHTML = lines.length ? lines.join('') : '<div style="color:#6b7280;font-size:0.8rem;">⚠️ אלרגיות מרובות — בחר משכך כאבים ידנית</div>';
+  }
+
+  // Steroids
+  const stEl = document.getElementById('preMedSteroids');
+  if (stEl) stEl.innerHTML = hasSter
+    ? `<div style="background:#fff7ed;border:1px solid #f97316;border-radius:8px;padding:9px;font-size:0.81rem;">⚠️ <strong>אלרגיה לסטרואידים</strong> — להימנע. שקול אנטיהיסטמין כחלופה.</div>`
+    : `<div style="background:#f5f3ff;border:1px solid #c4b5fd;border-radius:8px;padding:9px;font-size:0.81rem;">💉 <strong>דקסמתזון 8 מ"ג</strong> — שעה לפני הניתוח (הפחתת נפיחות)<br>
+       <span style="color:#6b7280;font-size:0.76rem;">חלופה: פרדניזון 40 מ"ג יום לפני + יום הניתוח</span></div>`;
+}
+
+function savePrOp() {
+  const data = {
+    hasBloodThinner: document.querySelector('input[name="bloodThinner"]:checked')?.value,
+    bloodDrugs: [...document.querySelectorAll('#bloodDrugGrid input:checked')].map(i=>i.value),
+    bloodDose: document.getElementById('bloodDose')?.value,
+    bloodIndication: document.getElementById('bloodIndication')?.value,
+    bloodDecision: document.querySelector('input[name="bloodDecision"]:checked')?.value,
+    bloodNotes: document.getElementById('bloodNotes')?.value,
+    inrValue: document.getElementById('inrValue')?.value,
+    inrDate: document.getElementById('inrDate')?.value,
+    inrLab: document.getElementById('inrLab')?.value,
+    prophylaxis: document.querySelector('input[name="prophylaxis"]:checked')?.value,
+    prophylaxisDose: document.getElementById('prophylaxisDose')?.value,
+    prophylaxisTiming: document.getElementById('prophylaxisTiming')?.value,
+    preMedNotes: document.getElementById('preMedNotes')?.value,
+  };
+  try { localStorage.setItem('preopData', JSON.stringify(data)); } catch(e){}
+  updatePreopSummary(data);
+}
+
+function updatePreopSummary(data) {
+  const el = document.getElementById('preopSummary');
+  if (!el) return;
+  const drugNames = {warfarin:'וורפרין',aspirin_anti:'אספירין',clopidogrel:'קלופידוגרל',
+    rivaroxaban:'ריבארוקסאבן',apixaban:'אפיקסאבן',dabigatran:'דביגטראן',enoxaparin:'אנוקספארין',other_blood:'אחר'};
+  const decisionNames = {continue:'המשך ללא הפסקה',stop3:'הפסקה 3 ימים לפני',stop5:'הפסקה 5 ימים לפני',cardio:'ייעוץ קרדיולוג'};
+  const prophNames = {full:'פרופילקסיס מלא',partial:'פרופילקסיס חלקי',none:'ללא פרופילקסיס'};
+
+  let lines = [];
+  if (data.hasBloodThinner === 'yes') {
+    const drugs = (data.bloodDrugs||[]).map(v=>drugNames[v]||v).join(', ');
+    lines.push('🩸 מדלל דם: ' + (drugs||'לא צוין') + (data.bloodDose ? ' | ' + data.bloodDose : ''));
+    if (data.inrValue) lines.push('🔬 INR: ' + data.inrValue + (data.inrDate ? ' (' + data.inrDate + ')' : ''));
+    if (data.bloodDecision) lines.push('📋 החלטה: ' + (decisionNames[data.bloodDecision]||data.bloodDecision));
+  } else if (data.hasBloodThinner === 'no') {
+    lines.push('🩸 ללא מדלל דם');
+  }
+  if (data.prophylaxis) {
+    lines.push('🦠 ' + (prophNames[data.prophylaxis]||data.prophylaxis) + (data.prophylaxisDose ? ' — ' + data.prophylaxisDose + ' ' + (data.prophylaxisTiming||'') : ''));
+  }
+  if (data.preMedNotes) lines.push('📝 ' + data.preMedNotes);
+
+  el.innerHTML = lines.length
+    ? lines.map(l=>`<div style="margin-bottom:4px;">${l}</div>`).join('')
+    : '<span style="opacity:0.6;">לא הוזנו נתונים עדיין</span>';
+}
+
+function initPreop() {
+  // Restore saved data
+  try {
+    const data = JSON.parse(localStorage.getItem('preopData')||'{}');
+    if (data.hasBloodThinner === 'yes') {
+      document.querySelector('input[name="bloodThinner"][value="yes"]').checked = true;
+      toggleBloodThinner(true);
+      (data.bloodDrugs||[]).forEach(v => {
+        const el = document.querySelector('#bloodDrugGrid input[value="'+v+'"]');
+        if (el) el.checked = true;
+      });
+      if (data.bloodDose) document.getElementById('bloodDose').value = data.bloodDose;
+      if (data.bloodIndication) document.getElementById('bloodIndication').value = data.bloodIndication;
+      if (data.bloodDecision) { const r=document.querySelector('input[name="bloodDecision"][value="'+data.bloodDecision+'"]'); if(r) r.checked=true; }
+      if (data.bloodNotes) document.getElementById('bloodNotes').value = data.bloodNotes;
+      if (data.inrValue) { document.getElementById('inrValue').value = data.inrValue; updateINR(); }
+      if (data.inrDate)  document.getElementById('inrDate').value = data.inrDate;
+      if (data.inrLab)   document.getElementById('inrLab').value = data.inrLab;
+    } else if (data.hasBloodThinner === 'no') {
+      document.querySelector('input[name="bloodThinner"][value="no"]').checked = true;
+    }
+    if (data.prophylaxis) {
+      const r=document.querySelector('input[name="prophylaxis"][value="'+data.prophylaxis+'"]');
+      if (r) { r.checked=true; updateProphylaxis(); }
+      if (data.prophylaxisDose)   document.getElementById('prophylaxisDose').value = data.prophylaxisDose;
+      if (data.prophylaxisTiming) document.getElementById('prophylaxisTiming').value = data.prophylaxisTiming;
+    }
+    if (data.preMedNotes) document.getElementById('preMedNotes').value = data.preMedNotes;
+    updatePreopSummary(data);
+  } catch(e) {}
+  renderPreMeds();
+}
+
+
+// ── RECOVERY TIMELINE ─────────────────────────────────────
+let currentDay = 1;
+const dayInfo = {
+  1: { stage:'🔴 שלב קריטי — ימים 1–2', cls:'stage-critical', tips:[
+    { icon:'🧊', h:'מזון רך וקר בלבד', p:'אכול רק מזון קר ורך ב-48 השעות הבאות. גלידה, יוגורט קר, שייק קר (ללא קשית) הם אידיאליים. הקור מפחית נפיחות מבפנים.' },
+    { icon:'🩸', h:'בקרת דימום', p:'נשוך בעדינות על גזה 30–45 דקות. מעט שאייה תקינה. לעולם לא להשתמש בקשית — שאיבה מנתקת את הקריש.' },
+    { icon:'💊', h:'קח תרופות לפי הלוח', p:'התחל משككי כאבים ואנטיביוטיקה לפי המרשם — אפילו לפני שהכאב מחמיר.' },
+    { icon:'🛋️', h:'מנוחה וראש מורם', p:'הישאר בבית עם ראש מורם על 2 כריות. ללא פעילות גופנית.' },
+  ]},
+  2: { stage:'🔴 שלב קריטי — ימים 1–2', cls:'stage-critical', tips:[
+    { icon:'🧊', h:'המשך מזון קר ורך', p:'הישאר על מזון קר ורך. עבור למזון בטמפרטורת חדר רק לאחר מלאות 48 שעות.' },
+    { icon:'📈', h:'הנפיחות צפויה לגדול!', p:'הנפיחות כיום עשויה להיות גדולה יותר מאתמול — זה תקין ומצופה. הנפיחות תגיע לשיאה ביום 2–3 ואז תתחיל לרדת. המשך בקרח.' },
+    { icon:'🌊', h:'התחל שטיפות מלח עדינות', p:'שטיפה עדינה במי מלח חמים: חצי כפית מלח בכוס מים חמים. אל תשטוף בחוזקה.' },
+    { icon:'💊', h:'תרופות לפי לוח זמנים', p:'המשך משككי כאבים ואנטיביוטיקה. אל תדלג על מינונים גם אם מרגיש טוב יותר.' },
+  ]},
+  3: { stage:'🟡 ריפוי מוקדם — ימים 3–5', cls:'stage-healing', tips:[
+    { icon:'🔺', h:'שיא הנפיחות היום!', p:'הנפיחות לרוב בשיאה היום. זה תקין לחלוטין. מחר צריכה להתחיל ירידה. עבור לחבישות חמות.' },
+    { icon:'⚠️', h:'מה לעקוב אחריו', p:'אם הכאב פתאום מחמיר, או שיש ריח/טעם רע — פנה לכירורג מיד. זה עלול להצביע על שקע יבש.' },
+    { icon:'🥚', h:'מזון רך — טמפרטורת חדר', p:'ביצים מקושקשות, פירה, ויוגורט מתאימים. אין קשית, הימנע ממזון חם.' },
+    { icon:'💊', h:'המשך אנטיביוטיקה', p:'אל תפסיק קורס האנטיביוטיקה גם אם מרגיש הרבה טוב יותר. השלם כל מינון.' },
+  ]},
+  7: { stage:'🟢 ריפוי פעיל — ימים 6–14', cls:'stage-good', tips:[
+    { icon:'🎉', h:'אבן דרך — שבוע!', p:'השלב הקשה ביותר מאחוריך. רקמת החניכיים סוגרת על השקע.' },
+    { icon:'📅', h:'ביקור מעקב', p:'ייתכן שיש לך ביקור מעקב השבוע. הכירורג יבדוק את ההתקדמות.' },
+    { icon:'🍝', h:'קידום בתזונה', p:'רוב המזונות הרכים בסדר כעת. המשך להימנע מקשים, פריכים, ודביקים.' },
+    { icon:'🧹', h:'היגיינת פה', p:'המשך שטיפה לאחר ארוחות. צחצח בעדינות סביב — אך לא ישירות על — אזור העקירה.' },
+  ]},
+  14: { stage:'🔵 כמעט ריפוי מלא — שבועות 2–4', cls:'stage-full', tips:[
+    { icon:'✅', h:'התקדמות מצוינת', p:'ריפוי רקמות רכות הושלם ברובו. השקע סגור ברובו.' },
+    { icon:'🍽️', h:'חזרה לתזונה רגילה', p:'רוב המטופלים יכולים לחזור לתזונה רגילה. הימנע ממזון קשה מאוד עוד שבוע.' },
+    { icon:'🏋️', h:'חזרה לפעילות', p:'פעילות גופנית מלאה בטוחה בדרך כלל כעת, אלא אם הונחית אחרת.' },
+    { icon:'🔍', h:'ריפוי עמוק נמשך', p:'השקע העצמי ממשיך להתחדש 3–6 חודשים — זה תקין לחלוטין.' },
+  ]}
+};
+
+function getDayInfo(d) {
+  if (d <= 2) return dayInfo[d] || dayInfo[1];
+  if (d <= 5) return dayInfo[3];
+  if (d <= 14) return dayInfo[7];
+  return dayInfo[14];
+}
+
+function renderDay() {
+  document.getElementById('dayNum').textContent = currentDay;
+  const info = getDayInfo(currentDay);
+  const sl = document.getElementById('stageLabel');
+  sl.textContent = info.stage; sl.className = 'stage-badge ' + info.cls;
+  document.getElementById('dayTips').innerHTML = info.tips.map(t =>
+    `<div class="tip-item"><div class="tip-icon">${t.icon}</div><div><h4>${t.h}</h4><p>${t.p}</p></div></div>`
+  ).join('');
+}
+
+function changeDay(d) { currentDay = Math.max(1, Math.min(30, currentDay + d)); renderDay(); }
+
+// ── MISC ──────────────────────────────────────────────────
+function toggleEffect(card) {
+  card.querySelector('.effect-body').classList.toggle('open');
+  card.querySelector('.chevron').classList.toggle('open');
+}
+
+function toggleReminder(cb, name) {
+  if (cb.checked) alert(`⏰ תזכורת הוגדרה עבור ${name}!\nבאפליקציה קלינית מלאה זה היה מתזמן התראות דחיפה.`);
+}
+
+// ── INIT ──────────────────────────────────────────────────
+renderDay();
+initSE();
+renderVasHistory();
+updateVas(5);
+
+// Show opening instructions if first visit OR if no intake done
+function showPage2() {
+  document.getElementById('landingPage1').style.display = 'none';
+  document.getElementById('landingPage2').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function closeOverlay() {
+  document.getElementById('openOverlay').style.display = 'none';
+  try { localStorage.setItem('overlayShown','1'); } catch(e){}
+}
+// ── CONSENT FORM ──────────────────────────────────────────
+let sigCanvas, sigCtx, sigDrawing = false;
+
+function initSignaturePad() {
+  sigCanvas = document.getElementById('signaturePad');
+  if (!sigCanvas || sigCanvas._initialized) return;
+  sigCanvas._initialized = true;
+
+  function resizeCanvas() {
+    const data = sigCtx ? sigCanvas.toDataURL() : null;
+    sigCanvas.width  = sigCanvas.offsetWidth  || 300;
+    sigCanvas.height = sigCanvas.offsetHeight || 130;
+    if (sigCtx) {
+      sigCtx.strokeStyle = '#1e3a8a';
+      sigCtx.lineWidth   = 2.5;
+      sigCtx.lineCap     = 'round';
+      sigCtx.lineJoin    = 'round';
+    }
+    if (data) { const img=new Image(); img.onload=()=>sigCtx.drawImage(img,0,0); img.src=data; }
+  }
+
+  sigCtx = sigCanvas.getContext('2d');
+  resizeCanvas();
+
+  const getPos = (e) => {
+    const r   = sigCanvas.getBoundingClientRect();
+    const src = e.touches ? e.touches[0] : e;
+    const scaleX = sigCanvas.width  / r.width;
+    const scaleY = sigCanvas.height / r.height;
+    return { x: (src.clientX - r.left) * scaleX, y: (src.clientY - r.top) * scaleY };
+  };
+
+  sigCanvas.addEventListener('mousedown',  e => { e.preventDefault(); sigDrawing=true; const p=getPos(e); sigCtx.beginPath(); sigCtx.moveTo(p.x,p.y); });
+  sigCanvas.addEventListener('mousemove',  e => { e.preventDefault(); if(!sigDrawing) return; const p=getPos(e); sigCtx.lineTo(p.x,p.y); sigCtx.stroke(); });
+  sigCanvas.addEventListener('mouseup',    e => { e.preventDefault(); sigDrawing=false; });
+  sigCanvas.addEventListener('mouseleave', () => sigDrawing=false);
+  sigCanvas.addEventListener('touchstart', e => { e.preventDefault(); sigDrawing=true; const p=getPos(e); sigCtx.beginPath(); sigCtx.moveTo(p.x,p.y); }, {passive:false});
+  sigCanvas.addEventListener('touchmove',  e => { e.preventDefault(); if(!sigDrawing) return; const p=getPos(e); sigCtx.lineTo(p.x,p.y); sigCtx.stroke(); }, {passive:false});
+  sigCanvas.addEventListener('touchend',   e => { e.preventDefault(); sigDrawing=false; }, {passive:false});
+
+  window.addEventListener('resize', resizeCanvas);
+}
+
+function clearSignature() {
+  if (sigCtx && sigCanvas) {
+    sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+  }
+}
+
+function buildConsentSummary() {
+  const get = id => { const el=document.getElementById(id); return el ? el.value.trim() : (localStorage.getItem(id)||''); };
+  const getLs = id => localStorage.getItem(id) || '';
+  const checked = id => document.getElementById(id)?.checked;
+
+  const pFirst = get('patientFirstName') || getLs('patientFirstName');
+  const pLast  = get('patientLastName')  || getLs('patientLastName');
+  const pid    = get('patientId')        || getLs('patientId');
+  const pPhone = get('patientPhone')     || getLs('patientPhone');
+  const pDOB   = get('patientDOB')       || getLs('patientDOB');
+  const pFather= get('patientFather')    || getLs('patientFather');
+  const fullName = (pFirst+' '+pLast).trim() || 'לא הוזן';
+
+  const drName  = getLs('doctorName')   || '—';
+  const drLic   = getLs('doctorLicense')|| '—';
+  const clinic  = getLs('clinicName')   || '—';
+  const drTel   = getLs('doctorTel')    || '—';
+  const drEmail = getLs('doctorEmail')  || '—';
+
+  const treatType = [checked('c_surgical')&&'טיפול כירורגי', checked('c_extraction')&&'עקירת שן', checked('c_apicectomy')&&'כריתת חוד שורש'].filter(Boolean).join(', ') || '—';
+  const treatment = get('c_treatment') || '—';
+  const signerName= get('c_signerName')|| fullName;
+  const signDate  = get('c_date')      || new Date().toLocaleDateString('he-IL');
+
+  const allergies = JSON.parse(localStorage.getItem('allergies')||'[]');
+  const allergyMap = {penicillin:'פניצילין',nsaids:'NSAIDs/איבופרופן',aspirin:'אספירין',dipyrone:'דיפירון/אופטלגין',paracetamol:'פרצטמול',codeine:'קודאין',steroids:'סטרואידים',local_anaesthesia:'הרדמה מקומית',chlorhexidine:'כלורהקסידין',sulfa:'סולפה',other:'אחר',latex:'לטקס'};
+  const allergyText = allergies.length ? allergies.map(v=>allergyMap[v]||v).join(', ') : 'ללא אלרגיות ידועות';
+
+  const surgDate = localStorage.getItem('surgeryDate') || '—';
+  const now = new Date().toLocaleString('he-IL',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+
+  return { fullName, pid, pPhone, pDOB, pFather, drName, drLic, clinic, drTel, drEmail,
+           treatType, treatment, signerName, signDate, allergyText, surgDate, now };
+}
+
+function saveConsent() {
+  const fields = ['c_treatment','c_date','c_signerName'];
+  const data = {};
+  fields.forEach(id => { const el=document.getElementById(id); if(el) data[id]=el.value; });
+  data.c_surgical   = document.getElementById('c_surgical')?.checked;
+  data.c_extraction = document.getElementById('c_extraction')?.checked;
+  data.c_apicectomy = document.getElementById('c_apicectomy')?.checked;
+  if (sigCanvas) data.signature = sigCanvas.toDataURL();
+  syncAllFields();
+  try { localStorage.setItem('consentData', JSON.stringify(data)); } catch(e){}
+  document.getElementById('consentSavedMsg').style.display = 'block';
+}
+
+function sendConsentEmail() {
+  const s = buildConsentSummary();
+  const subject = encodeURIComponent('✍️ טופס הסכמה — ' + s.fullName + ' | ת.ז. ' + s.pid);
+  const body = encodeURIComponent(
+    'שלום ' + s.drName + ',\n\n' +
+    'המטופל/ת חתמ/ה על טופס ההסכמה לטיפול. להלן הפרטים:\n\n' +
+    '══ פרטי מטופל ══\n' +
+    'שם מלא: ' + s.fullName + '\n' +
+    'ת.ז.: ' + s.pid + '\n' +
+    'שם האב: ' + s.pFather + '\n' +
+    'תאריך לידה: ' + s.pDOB + '\n' +
+    'טלפון: ' + s.pPhone + '\n\n' +
+    '══ פרטי הטיפול ══\n' +
+    'סוג הניתוח: ' + s.treatType + '\n' +
+    'תיאור: ' + s.treatment + '\n' +
+    'תאריך ניתוח מתוכנן: ' + s.surgDate + '\n\n' +
+    '══ אלרגיות ══\n' +
+    s.allergyText + '\n\n' +
+    '══ הסכמה ══\n' +
+    'חותם/ת: ' + s.signerName + '\n' +
+    'תאריך חתימה: ' + s.signDate + '\n' +
+    'זמן שליחה: ' + s.now + '\n\n' +
+    '══ פרטי המרפאה ══\n' +
+    'רופא: ' + s.drName + ' | רישיון: ' + s.drLic + '\n' +
+    'מרפאה: ' + s.clinic + ' | טלפון: ' + s.drTel + '\n\n' +
+    '---\nנשלח אוטומטית ממערכת מדריך ההחלמה לאחר עקירת שיניים.'
+  );
+  const email = localStorage.getItem('doctorEmail') || '';
+  const href = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
+  const a = document.createElement('a');
+  a.href = href; a.style.display='none';
+  document.body.appendChild(a); a.click();
+  setTimeout(() => document.body.removeChild(a), 300);
+}
+
+function sendConsentWhatsApp() {
+  const s = buildConsentSummary();
+  const phone = normalizePhone(localStorage.getItem('doctorPhone') || '');
+  const text = encodeURIComponent(
+    '✍️ *טופס הסכמה — ' + s.fullName + '*\n\n' +
+    '👤 *מטופל:* ' + s.fullName + ' | ת.ז: ' + s.pid + '\n' +
+    '📞 ' + s.pPhone + '\n\n' +
+    '🦷 *טיפול:* ' + s.treatType + '\n' +
+    s.treatment + '\n\n' +
+    '⚠️ *אלרגיות:* ' + s.allergyText + '\n\n' +
+    '✅ *חתם/ה:* ' + s.signerName + ' | ' + s.signDate + '\n\n' +
+    '🏥 ' + s.clinic + ' | ' + s.drTel
+  );
+  const url = phone ? 'https://wa.me/' + phone + '?text=' + text : 'https://wa.me/?text=' + text;
+  const a = document.createElement('a');
+  a.href=url; a.target='_blank'; a.rel='noopener'; a.style.display='none';
+  document.body.appendChild(a); a.click();
+  setTimeout(() => document.body.removeChild(a), 300);
+}
+
+function printConsent() {
+  const s = buildConsentSummary();
+  const sig = (sigCanvas && localStorage.getItem('consentData'))
+    ? JSON.parse(localStorage.getItem('consentData')||'{}').signature || '' : '';
+
+  const printWin = window.open('', '_blank');
+  if (!printWin) { alert('אפשר פתיחת חלון קופץ בהגדרות Safari כדי להדפיס.'); return; }
+  printWin.document.write(`<!DOCTYPE html><html dir="rtl" lang="he"><head><meta charset="UTF-8">
+<title>טופס הסכמה — ${s.fullName}</title>
+<style>
+  @media print { body { margin: 0; } .no-print { display:none; } }
+  body { font-family: Arial, sans-serif; direction: rtl; margin: 24px; color: #111; font-size: 13px; line-height: 1.7; }
+  h1 { font-size: 16px; text-align: center; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px; color: #1e3a8a; }
+  h2 { font-size: 13px; color: #1e3a8a; border-right: 4px solid #3b82f6; padding-right: 8px; margin-top: 18px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; margin-bottom: 10px; }
+  .field { margin-bottom: 4px; }
+  .label { font-size: 11px; color: #666; }
+  .value { font-weight: 600; border-bottom: 1px solid #ccc; padding-bottom: 2px; min-width: 120px; display: inline-block; }
+  .allergy-box { background: #fff7ed; border: 1px solid #f97316; border-radius: 6px; padding: 8px 12px; margin: 8px 0; }
+  .consent-text { background: #f8faff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 10px; font-size: 12px; margin: 10px 0; }
+  .sig-area { border: 2px solid #1e3a8a; border-radius: 8px; min-height: 80px; margin: 10px 0; padding: 8px; text-align: center; }
+  .footer { font-size: 10px; color: #666; text-align: center; margin-top: 24px; border-top: 1px solid #e5e7eb; padding-top: 8px; }
+  .stamp { border: 2px dashed #1e3a8a; border-radius: 8px; padding: 10px; margin-top: 14px; text-align: center; min-height: 60px; }
+  button.print-btn { display: block; margin: 16px auto; padding: 10px 30px; background: #1e3a8a; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; }
+</style></head><body>
+<h1>טופס הסכמה לטיפול כירורגי בחלל הפה<br>
+<small style="font-size:12px;font-weight:normal;">Surgical Procedure / Tooth Extraction / Apicectomy</small></h1>
+
+<h2>פרטי המתרפא/ה</h2>
+<div class="grid">
+  <div class="field"><div class="label">שם משפחה ופרטי</div><div class="value">${s.fullName}</div></div>
+  <div class="field"><div class="label">ת.ז.</div><div class="value">${s.pid}</div></div>
+  <div class="field"><div class="label">שם האב</div><div class="value">${s.pFather}</div></div>
+  <div class="field"><div class="label">תאריך לידה</div><div class="value">${s.pDOB}</div></div>
+  <div class="field"><div class="label">טלפון</div><div class="value">${s.pPhone}</div></div>
+  <div class="field"><div class="label">תאריך ניתוח</div><div class="value">${s.surgDate}</div></div>
+</div>
+
+<h2>פרטי הטיפול</h2>
+<div class="grid">
+  <div class="field"><div class="label">סוג הניתוח</div><div class="value">${s.treatType}</div></div>
+  <div class="field"><div class="label">תיאור הטיפול</div><div class="value">${s.treatment}</div></div>
+</div>
+
+<h2>אלרגיות ידועות</h2>
+<div class="allergy-box"><strong>${s.allergyText}</strong></div>
+
+<h2>פירוט הטיפול — הסבר לחולה</h2>
+<div class="consent-text">
+הוסברו לי התוצאות המקוות, ודרכי הטיפול החלופיות האפשריות בנסיבות המקרה וכן התוצאות העלולות לנבוע מחוסר טיפול. דרכי הטיפול החלופיות נשקלו על ידי טרם הבחירה בטיפול זה.<br>
+הוסברה לי חשיבות הפסקת העישון לפני ואחרי הטיפול, טיפול במחלת חניכיים ואיזון מחלת הסוכרת.<br>
+הוסברו לי תופעות הלוואי של הטיפול העיקרי, לרבות: <strong>נפיחות, כאב, שטפי דם תת עוריים והגבלה בפתיחת הפה</strong> לפרק זמן מוגבל.<br>
+כמו כן הוזהרתי מהסיכונים האפשריים: פגיעה מכנית או לחץ על עצבים תחושתיים (העצב המנטלי / האינפראורביטלי) העלולה לגרום לשינויי תחושה — נימול, עקצוץ או הפחתת תחושה זמנית ולעיתים נדירות קבועה — בשפה, בסנטר, בלשון או בלחי. אפשרות לפגיעה בסינוס המקסילרי בעקירות עליונות. נפיחות וכאב לאחר הניתוח, והגבלה זמנית בפתיחת הפה.
+</div>
+
+<h2>הצהרת הסכמה</h2>
+<div class="consent-text">
+אני נתתי/ת את הסכמתי לביצוע הטיפול העיקרי. הסכמתי ניתנת, בזאת גם, לביצוע הרדמה מקומית.<br>
+<strong>אם יוחלט לבצע את הטיפול בהרדמה כללית — יינתן לי הסבר נפרד על ידי רופא מרדים.</strong>
+</div>
+
+<div class="grid" style="margin-top:14px;">
+  <div class="field"><div class="label">שם החותם/ת</div><div class="value">${s.signerName}</div></div>
+  <div class="field"><div class="label">תאריך חתימה</div><div class="value">${s.signDate}</div></div>
+</div>
+
+<h2>חתימת המתרפא/ה</h2>
+<div class="sig-area">
+  ${sig ? '<img src="'+sig+'" style="max-height:70px;max-width:100%;">' : '<span style="color:#999;font-size:12px;">חתימה דיגיטלית</span>'}
+</div>
+
+<h2>פרטי הרופא המאשר</h2>
+<div class="grid">
+  <div class="field"><div class="label">שם הרופא</div><div class="value">${s.drName}</div></div>
+  <div class="field"><div class="label">מספר רישיון</div><div class="value">${s.drLic}</div></div>
+  <div class="field"><div class="label">מרפאה</div><div class="value">${s.clinic}</div></div>
+  <div class="field"><div class="label">טלפון</div><div class="value">${s.drTel}</div></div>
+</div>
+<div class="stamp">חתימת הרופא ומספר רישיון<br><br><br></div>
+
+<div class="footer">נוצר: ${s.now} | מערכת מדריך ההחלמה לאחר עקירת שיניים</div>
+
+<button class="print-btn no-print" onclick="window.print();window.close();">🖨️ הדפס / שמור כ-PDF</button>
+</body></html>`);
+  printWin.document.close();
+  setTimeout(() => printWin.print(), 400);
+}
+
+
+function normalizePhone(raw) {
+  if (!raw) return '';
+  // Strip spaces, dashes, dots, parentheses
+  let num = raw.replace(/[\s\-().+]/g, '');
+  // Already starts with 972
+  if (num.startsWith('972')) return num;
+  // Starts with 0 (local Israeli) → replace leading 0 with 972
+  if (num.startsWith('0')) return '972' + num.slice(1);
+  // Starts with +972
+  if (num.startsWith('972')) return num;
+  // Fallback — return as-is stripped
+  return num;
+}
+
+function syncAllFields() {
+  const fields = ['doctorName','doctorLicense','doctorTel','doctorEmail','doctorPhone','clinicName',
+                  'patientFirstName','patientLastName','patientId','patientFather','patientPhone','patientDOB'];
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) localStorage.setItem(id, el.value.trim());
+  });
+  propagateFields();
+}
+
+function propagateFields() {
+  const get = id => { try { return localStorage.getItem(id) || ''; } catch(e){ return ''; } };
+  const dn=get('doctorName'), dl=get('doctorLicense'), dc=get('clinicName'), dt=get('doctorTel'), de=get('doctorEmail');
+  const pFn=get('patientFirstName'), pLn=get('patientLastName'), pid=get('patientId'), pph=get('patientPhone');
+  const fullName = (pFn + ' ' + pLn).trim();
+
+  const setText = (id, val) => { const el=document.getElementById(id); if(el) el.textContent=val||'—'; };
+  setText('c_drName', dn); setText('c_drLicense', dl); setText('c_drClinic', dc);
+
+  const el = document.getElementById('instr_contact');
+  if (el) {
+    const parts = [];
+    if (dn) parts.push('<strong>👨‍⚕️ '+dn+'</strong>'+(dc?' — '+dc:''));
+    if (dt) parts.push('📞 <a href="tel:+'+normalizePhone(dt)+'" style="color:#1e3a8a;font-weight:700;">'+dt+'</a>');
+    if (de) parts.push('📧 <a href="mailto:'+de+'" style="color:#1e3a8a;">'+de+'</a>');
+    el.innerHTML = parts.length ? parts.join('<br>') : '<span style="color:#6b7280;">לא הוזנו פרטי קשר בלשונית קבלה.</span>';
+  }
+
+  const headerSub = document.querySelector('header p');
+  if (headerSub && fullName) headerSub.textContent = 'מטופל: '+fullName+(pid?' | ת.ז: '+pid:'');
+}
+
+function restoreAllFields() {
+  // Restore intake fields
+  const fields = ['doctorName','doctorLicense','doctorTel','doctorEmail','doctorPhone','clinicName',
+                  'patientFirstName','patientLastName','patientId','patientFather','patientPhone','patientDOB'];
+  fields.forEach(id => {
+    const val = localStorage.getItem(id);
+    const el = document.getElementById(id);
+    if (val && el) el.value = val;
+  });
+  propagateFields();
+  // Restore consent form
+  try {
+    const cd = JSON.parse(localStorage.getItem('consentData') || '{}');
+    Object.entries(cd).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (el.type === 'checkbox') el.checked = val;
+      else if (id !== 'signature') el.value = val || '';
+    });
+    if (cd.signature && sigCanvas) {
+      const img = new Image();
+      img.onload = () => sigCtx.drawImage(img, 0, 0);
+      img.src = cd.signature;
+    }
+  } catch(e) {}
+}
+
+// ── PRE-FILLED DOCTOR DETAILS ─────────────────────────
+(function() {
+  const defaults = {
+    doctorName:    'ד"ר בר דרומא איתן',
+    doctorLicense: '',
+    clinicName:    'מרפאת ד"ר בר דרומא',
+    doctorTel:     '08-6282022',
+    doctorEmail:   'eitan.bardroma@gmail.com',
+    doctorPhone:   '050-8871123',
+  };
+  Object.entries(defaults).forEach(([k, v]) => {
+    if (!localStorage.getItem(k)) localStorage.setItem(k, v);
+  });
+  // Skip the opening instructions overlay — not needed in this version
+  localStorage.setItem('overlayShown','1');
+})();
+setTimeout(initSignaturePad, 400);
+setTimeout(initPreop, 300);
+try {
+  document.getElementById('openOverlay').style.display = 'block';
+} catch(e) {}
+
+try {
+  const sd = localStorage.getItem('surgeryDate');
+  if (sd) { const el = document.getElementById('surgeryDate'); if (el) el.value = sd; }
+  const savedAllergies = JSON.parse(localStorage.getItem('allergies') || '[]');
+  if (savedAllergies.length > 0 || localStorage.getItem('intakeDone')) {
+    savedAllergies.forEach(val => {
+      const input = document.querySelector(`#allergyGrid input[value="${val}"]`);
+      if (input) { input.checked = true; input.closest('.allergy-item').classList.add('checked'); }
+    });
+    updateAllergyAlert();
+    updateJawCards();
+    renderMedications(savedAllergies);
+    setTimeout(() => { restoreAllFields(); propagateFields(); }, 100);
+  }
+} catch(e) {}
+</script>
+</body>
+</html>
